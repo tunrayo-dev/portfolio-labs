@@ -1,0 +1,181 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      PromptLab — Prompt Design Studio
+    </title>
+    <link rel="stylesheet" href="../../assets/project.css">
+    <style>
+.lab {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px
+}
+.editor {
+  display:grid;
+  gap:12px
+}
+.field textarea {
+  min-height:110px;
+  resize:vertical
+}
+.prompt-output {
+  white-space:pre-wrap;
+  background:#152433;
+  color:#e2eaf1;
+  border-radius:12px;
+  padding:18px;
+  min-height:270px;
+  font:12px/1.7 'DM Mono',monospace
+}
+.saved {
+  display:grid;
+  gap:9px;
+  margin-top:16px
+}
+.saved-card {
+  border:1px solid #e4e9ec;
+  padding:12px;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px
+}
+.saved-card b {
+  font-size:12px
+}
+.saved-card small {
+  font:10px 'DM Mono';
+  color:#7d8a95
+}
+.btnrow {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap
+}
+@media(max-width:700px) {
+  .lab {
+    grid-template-columns:1fr
+  }
+}
+    </style>
+  </head>
+  <body>
+    <nav class="top">
+      <a class="brand" href="../../index.html">
+        ML
+        <small>
+          / LABS
+        </small>
+      </a>
+      <a class="back" href="../../index.html">
+        ← ALL PROJECTS
+      </a>
+    </nav>
+    <main class="wrap">
+      <header class="hero">
+        <div>
+          <div class="eyebrow">
+            03 / AI WORKFLOW EXPLORATION
+          </div>
+          <h1>
+            PromptLab
+          </h1>
+          <p>
+            Build clearer prompts by separating role, context, task and output format. Compare versions and keep your best prompt drafts.
+          </p>
+        </div>
+        <span class="badge">
+          NO AI API · PROMPT DESIGN
+        </span>
+      </header>
+      <div class="lab">
+        <section class="panel editor">
+          <h2>
+            Prompt builder
+          </h2>
+          <div class="field">
+            <label class="label">
+              ROLE / PERSONA
+            </label>
+            <textarea class="input" id="role" placeholder="Who should the model act as?">
+            </textarea>
+          </div>
+          <div class="field">
+            <label class="label">
+              CONTEXT
+            </label>
+            <textarea class="input" id="context" placeholder="What background should it know?">
+            </textarea>
+          </div>
+          <div class="field">
+            <label class="label">
+              TASK
+            </label>
+            <textarea class="input" id="task" placeholder="What should it do? Be specific.">
+            </textarea>
+          </div>
+          <div class="field">
+            <label class="label">
+              OUTPUT FORMAT
+            </label>
+            <textarea class="input" id="format" placeholder="Structure, tone, length, constraints...">
+            </textarea>
+          </div>
+          <div class="field">
+            <label class="label">
+              VERSION LABEL
+            </label>
+            <input class="input" id="label" placeholder="e.g. Friendly explainer v1">
+          </div>
+          <div class="btnrow">
+            <button class="btn" id="save">
+              Save version
+            </button>
+            <button class="btn alt" id="clear">
+              Clear
+            </button>
+          </div>
+        </section>
+        <section>
+          <div class="panel">
+            <h2>
+              Prompt preview
+            </h2>
+            <div class="prompt-output" id="output">
+              Your structured prompt will appear here as you fill in the fields.
+            </div>
+            <div class="btnrow" style="margin-top:12px">
+              <button class="btn alt" id="copy">
+                Copy prompt
+              </button>
+              <span class="muted" id="note">
+              </span>
+            </div>
+          </div>
+          <div class="panel" style="margin-top:16px">
+            <h2>
+              Saved versions
+            </h2>
+            <p class="muted">
+              Save, revisit and compare your prompt drafts.
+            </p>
+            <div class="saved" id="saved">
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer class="foot">
+        <span>
+          PromptLab · Prompt design playground
+        </span>
+        <span>
+          Browser only
+        </span>
+      </footer>
+    </main>
+    <script src="app.js">
+    </script>
+  </body>
+</html>
