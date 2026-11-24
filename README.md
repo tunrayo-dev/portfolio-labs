@@ -25,16 +25,16 @@ No package installation or build command is needed.
 
 1. Open the repository's **Settings**.
 2. Select **Pages**.
-3. Under the build and deployment section, choose **Deploy from a branch**.
-4. Select the `main` branch and the `/(root)` folder, then save.
-5. Open the Pages URL shown there after deployment finishes.
+3. Under **Build and deployment**, choose **GitHub Actions** as the source.
+4. The included workflow (`.github/workflows/pages.yml`) will publish the site after pushes to `main`.
+5. Open the Pages URL shown in Settings after the first successful workflow run.
 
 ## Project notes
 
 - **DataLens** uses generated sample records. Its numbers are illustrative and are not real organisational or personal data.
 - **FlowState** and **PromptLab** use browser local storage. Saved items are specific to the browser and device; clearing browser data may remove them.
 - **PromptLab** is a prompt-design workspace. It formats, saves and compares prompts but does not send them to an AI service.
-- **RoboRoute** demonstrates breadth-first search (BFS) on an unweighted grid. Each move has the same cost, so BFS finds a shortest route when one exists.
+- **RoboRoute** compares BFS, Dijkstra and A* on an unweighted grid. Every move has equal cost; the algorithms demonstrate different exploration strategies.
 
 ## Built with
 
