@@ -62,3 +62,25 @@
 .hero-intro{max-width:330px;font-size:14px}
 }
 @media(prefers-reduced-motion:reduce){.visual-halo,.visual-monolith{animation:none!important}}
+
+
+/* UPCOMING PRODUCTS */
+.future-products{padding:125px clamp(24px,9vw,140px);background:linear-gradient(145deg,#0a0d17,#080a10 65%);border-bottom:1px solid var(--line)}
+.future-top{display:flex;justify-content:space-between;gap:20px;font:10px var(--mono);letter-spacing:.13em;color:#999da9}
+.future-products>h2{font:600 clamp(48px,7vw,92px)/.98 var(--display);letter-spacing:-.08em;margin:50px 0 20px}
+.future-products>h2 em{font-style:normal;color:var(--accent)}
+.future-intro{max-width:560px;color:#a4a8b5;line-height:1.8;margin:0 0 70px}
+.future-product{display:grid;grid-template-columns:1fr 1.1fr;gap:28px 8%;padding:42px 0 52px;border-top:1px solid #ffffff30}
+.future-number{grid-column:1/-1;font:10px var(--mono);letter-spacing:.12em;color:#8f94a5}
+.future-copy{align-self:start}.future-status{font:9px var(--mono);letter-spacing:.13em;color:var(--accent);border:1px solid #a9b9ff55;padding:8px 10px;display:inline-block}
+.future-copy h3{font:600 clamp(48px,7vw,82px)/.95 var(--display);letter-spacing:-.08em;margin:25px 0 18px}
+.future-copy h3 em{font-style:normal;color:var(--accent);font-size:.55em}
+.future-copy p{max-width:460px;color:#a4a8b5;line-height:1.8;font-size:14px}
+.future-copy>a{display:inline-block;margin-top:22px;font:10px var(--mono);letter-spacing:.08em;text-decoration:none;border-bottom:1px solid #ffffff55;padding-bottom:12px}
+.future-copy>a b{color:var(--accent);margin-left:12px}
+.future-details{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;align-self:center}
+.future-details>div{padding:20px 0;border-top:1px solid #ffffff20}
+.future-details strong{display:block;font:10px var(--mono);letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+.future-details span{display:block;color:#a4a8b5;font-size:13px;line-height:1.7}
+.upcoming-card{border-color:#a9b9ff55!important}
+@media(max-width:760px){.future-products{padding:85px 24px}.future-top{font-size:8px}.future-products>h2{font-size:clamp(45px,11vw,68px);margin-top:38px}.future-intro{margin-bottom:45px}.future-product{grid-template-columns:1fr;gap:24px;padding:30px 0 40px}.future-number{grid-column:auto}.future-copy h3{font-size:clamp(48px,13vw,70px);margin:20px 0 14px}.future-details{gap:0 18px}.future-details span{font-size:12px}}
