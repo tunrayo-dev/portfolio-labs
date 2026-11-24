@@ -1,0 +1,59 @@
+/* Portfolio Labs — product editorial and visual system */
+:root{--pv-ink:#17212b;--pv-muted:#697783;--pv-line:#e5e9ed;--pv-paper:#fff;--pv-canvas:#f5f7f8;--pv-accent:var(--product-accent,#315f82);--pv-soft:var(--product-soft,#eaf1f5);--pv-radius:18px}
+body[class*="pl-product-"]{background:var(--pv-canvas)!important;color:var(--pv-ink)!important;font-family:var(--product-font,Inter),Inter,system-ui,sans-serif!important;line-height:1.6}
+body:has(.appbar .brand[href*="sellsmart"]),body:has(.appbar .brand[href*="readwell"]){background:var(--pv-canvas)!important;color:var(--pv-ink)!important}
+.product-content>main,.wrap{max-width:1380px!important;padding:clamp(22px,4vw,54px)!important}
+.product-content .wrap{padding-top:clamp(22px,4vw,48px)!important}
+.hero{position:relative;isolation:isolate;display:flex;align-items:flex-end;justify-content:space-between;gap:28px;overflow:hidden;margin:0 0 24px!important;padding:clamp(24px,4vw,46px)!important;border:1px solid color-mix(in srgb,var(--pv-accent) 18%,#fff)!important;border-radius:24px!important;background:linear-gradient(118deg,#fff 0%,var(--pv-soft) 100%)!important;box-shadow:0 16px 44px rgba(23,33,43,.045)!important}
+.hero:after{content:"";position:absolute;z-index:-1;width:280px;height:280px;right:5%;top:-145px;border:1px solid color-mix(in srgb,var(--pv-accent) 20%,transparent);border-radius:50%;box-shadow:0 0 0 24px color-mix(in srgb,var(--pv-accent) 5%,transparent),0 0 0 52px color-mix(in srgb,var(--pv-accent) 3%,transparent)}
+.hero>div{max-width:780px;min-width:0}.hero .eyebrow,.pagehead .eyebrow{font-size:10px;letter-spacing:.16em;color:var(--pv-accent);font-weight:700}
+.hero h1,.pagehead h1{font-size:clamp(36px,5.4vw,64px)!important;line-height:1.02!important;letter-spacing:-.065em!important;margin:12px 0!important;color:var(--pv-ink)!important}
+.hero p:not(.eyebrow),.pagehead p{max-width:650px;margin:12px 0 0!important;color:var(--pv-muted)!important;font-size:clamp(14px,1.5vw,17px)!important;line-height:1.8!important}
+.badge{display:inline-flex;align-items:center;gap:7px;max-width:230px;white-space:normal;padding:9px 12px!important;border:1px solid color-mix(in srgb,var(--pv-accent) 18%,#fff)!important;border-radius:999px!important;background:#ffffffb8!important;color:var(--pv-accent)!important;font:700 9px/1.5 var(--product-mono,ui-monospace,monospace)!important;letter-spacing:.08em}
+.panel,.kpi,.metrics article,.pl-overview-panel{border:1px solid var(--pv-line)!important;border-radius:var(--pv-radius)!important;background:var(--pv-paper)!important;box-shadow:0 8px 26px rgba(20,35,48,.035)!important}
+.panel{padding:clamp(18px,2.4vw,28px)!important}
+.panel h2,.panel h3{color:var(--pv-ink)!important;letter-spacing:-.035em!important}
+.panel h2{font-size:clamp(17px,2vw,21px)!important;margin:0 0 13px!important}
+.panel h3{font-size:15px!important}
+.muted,.hint,.empty{color:var(--pv-muted)!important;line-height:1.75!important}
+.kpis,.metrics{gap:13px!important;margin:0 0 18px!important}
+.kpi,.metrics article{position:relative;overflow:hidden;padding:20px 22px!important;min-width:0}
+.kpi:before,.metrics article:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pv-accent)}
+.kpi label,.metrics small{font:700 9px/1.5 var(--product-mono,ui-monospace,monospace)!important;letter-spacing:.13em!important;color:#82909b!important}
+.kpi strong,.metrics strong{display:block;margin:11px 0 4px!important;font-size:clamp(25px,3vw,36px)!important;line-height:1.1!important;letter-spacing:-.055em!important;color:var(--pv-ink)!important}
+.kpi small,.metrics span{font-size:11px!important;color:var(--pv-muted)!important;line-height:1.6}
+.grid{gap:16px!important}
+.input,select.input,textarea.input,input.input,.formgrid input,.formgrid select,.formgrid textarea{min-height:44px;border:1px solid #dce3e8!important;border-radius:10px!important;background:#fbfcfd!important;color:var(--pv-ink)!important;padding:11px 13px!important;font:500 13px/1.5 Inter,system-ui,sans-serif!important;transition:border-color .18s,box-shadow .18s,background .18s}
+textarea.input,.formgrid textarea{min-height:90px}
+.input:focus,select:focus,textarea:focus,.formgrid input:focus,.formgrid select:focus,.formgrid textarea:focus{outline:0!important;border-color:var(--pv-accent)!important;box-shadow:0 0 0 4px color-mix(in srgb,var(--pv-accent) 12%,transparent)!important;background:#fff!important}
+.label,.formgrid label,.invoice-tools label{display:grid;gap:7px;color:#53616d!important;font:700 9px/1.5 var(--product-mono,ui-monospace,monospace)!important;letter-spacing:.1em!important}
+.btn,.primary,.smallbtn,.actions button,.filebtn{min-height:40px;border-radius:10px!important;font:700 12px/1.35 Inter,system-ui,sans-serif!important;letter-spacing:0!important;transition:transform .18s,box-shadow .18s,filter .18s!important}
+.btn:not(.alt),.primary{background:var(--pv-accent)!important;color:white!important;box-shadow:0 6px 16px color-mix(in srgb,var(--pv-accent) 20%,transparent)!important}
+.btn:hover,.primary:hover,.smallbtn:hover,.actions button:hover{transform:translateY(-1px)}
+.btn.alt,.smallbtn,.actions button,.filebtn{border:1px solid var(--pv-line)!important;background:#f8fafb!important;color:#42515d!important}
+.tool-row,.tool-list,.actions,.btnrow{gap:9px!important}
+.tool-item,.row,.invoice-item{border-color:#edf0f2!important}
+.tool-item{padding:13px 0!important}
+.table{border-collapse:separate!important;border-spacing:0!important;width:100%;font-size:12px!important}
+.table th{background:#f4f7f8!important;color:#71808b!important;font:700 9px var(--product-mono,ui-monospace,monospace)!important;letter-spacing:.1em;padding:13px!important}
+.table td{padding:13px!important;border-bottom:1px solid #edf0f2!important;color:#33424d!important}
+.table tr:hover td{background:color-mix(in srgb,var(--pv-soft) 45%,white)!important}
+.ps-product{border-radius:15px!important}
+.ps-nav{padding-right:3px}
+.ps-link{font-size:12px!important;letter-spacing:.005em}
+.pl-overview-panel{padding:clamp(20px,3vw,34px)!important}
+.pl-overview-heading h2{font-size:clamp(25px,3vw,36px)!important;letter-spacing:-.05em!important}
+.pl-launch-card{border-radius:14px!important;background:linear-gradient(145deg,#fff,var(--pv-soft))!important}
+.pl-launch-card strong{font-size:15px!important}
+.focus-panel,.focus-card{border-radius:22px!important;overflow:hidden}
+#lagosMap{border:1px solid var(--pv-line);box-shadow:inset 0 0 0 1px #fff}
+#routineCalendar button{font-family:Inter,system-ui,sans-serif!important;transition:transform .16s,border-color .16s}
+#routineCalendar button:hover{transform:translateY(-2px);border-color:var(--pv-accent)!important}
+.receipt,.preview-sheet{border-radius:14px!important;box-shadow:0 12px 35px rgba(20,35,48,.07)}
+.appbar{padding-inline:clamp(18px,5vw,64px)!important}
+.appbar .brand{font-size:12px!important;letter-spacing:.09em!important}
+@media(max-width:760px){.product-content>main,.wrap{padding:18px 14px 28px!important}.hero{align-items:flex-start;flex-direction:column;padding:24px 20px!important;border-radius:18px!important;gap:14px}.hero:after{right:-120px;top:-165px}.hero h1,.pagehead h1{font-size:clamp(36px,11vw,52px)!important}.kpis,.metrics{grid-template-columns:1fr!important}.panel{padding:18px!important}.grid{grid-template-columns:1fr!important}.grid.two{grid-template-columns:1fr!important}.badge{max-width:100%}}
+@media(prefers-reduced-motion:reduce){.btn,.primary,.smallbtn,.actions button,#routineCalendar button{transition:none!important}}
+/* Individual product accents when the app runs without the dynamic sidebar */
+body:has(.appbar .brand[href*="sellsmart"]){--pv-accent:#16836d;--pv-soft:#e4f5ef;--product-font:'DM Sans'}
+body:has(.appbar .brand[href*="readwell"]){--pv-accent:#635bdb;--pv-soft:#efedff;--product-font:'Space Grotesk'}
