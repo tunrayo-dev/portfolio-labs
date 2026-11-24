@@ -184,15 +184,14 @@
             <h2>
               Controls
             </h2>
-            <p class="muted">
-              Click empty tiles to place or remove obstacles. The start and goal are fixed.
-            </p>
+            <p class="muted">Choose an algorithm, adjust the animation speed, then run the simulation. Each tile has equal movement cost in this version.</p><label class="label" for="algorithm">ALGORITHM</label><select id="algorithm" class="input"><option value="bfs">Breadth-first search (BFS)</option><option value="dijkstra">Dijkstra</option><option value="astar">A* search</option></select><label class="label" for="speed">ANIMATION SPEED</label><input id="speed" class="input" type="range" min="1" max="10" value="6"><div class="btnrow"><button class="btn alt" id="saveMap">Export map</button><label class="btn alt" for="loadMap" style="cursor:pointer">Import map</label><input id="loadMap" type="file" accept=".json,application/json" hidden></div>
             <button class="btn" id="solve" style="width:100%">
               Find route →
             </button>
             <button class="btn alt" id="random" style="width:100%;margin-top:8px">
               Random obstacles
             </button>
+            <button class="btn alt" id="compare">Compare algorithms</button>
             <button class="btn alt" id="clear" style="width:100%;margin-top:8px">
               Clear board
             </button>
