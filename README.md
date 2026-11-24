@@ -1,54 +1,32 @@
 # Portfolio Labs — Motunrayo Linda Idowu
 
-A collection of browser-based projects exploring software development, data analysis, interface design, prompt engineering and computational thinking.
+A collection of practical browser tools and native source-code projects.
 
-Every demo runs in a modern browser. No installation, build step or API key is required.
+## Web tools
+| Project | Purpose | Technologies |
+|---|---|---|
+| FlowState | Task planning and focus sessions | HTML, CSS, JavaScript |
+| DataLens | CSV/JSON exploration | JavaScript |
+| PromptLab | Prompt drafting and versioning | JavaScript |
+| RoboRoute | BFS, Dijkstra and A* visualisation | JavaScript |
+| BudgetBoard | Income and expense tracking with CSV export | JavaScript |
+| StudyKit | Flashcards and active-recall revision | React, Tailwind CSS |
+| CV Studio | CV builder with print-to-PDF | JavaScript |
+| HabitTrack | Daily habit check-ins and weekly review | JavaScript |
 
-## Explore the projects
+## Native code projects
+- `code-projects/cpp/expense-tracker.cpp` — C++17 console expense tracker.
+- `code-projects/csharp/study-cards.cs` — C# console flashcard app.
 
-| Project | What you can do |
-| --- | --- |
-| [DataLens](projects/datalens/) | Explore sample data or import CSV/JSON records, filter and search them, inspect summary charts, and export the results. |
-| [FlowState](projects/flowstate/) | Schedule tasks with dates and times, use custom focus modes, enable in-tab browser reminders, back up tasks as JSON, and export due dates as calendar files. |
-| [PromptLab](projects/promptlab/) | Build structured prompts, use templates, save and compare versions, and import/export a prompt library as JSON. It does not connect to an AI model. |
-| [RoboRoute](projects/roboroute/) | Visualise BFS, Dijkstra and A* on a grid, compare exploration, adjust animation speed, and import/export maps. |
+C++ and C# source projects run locally in a compiler or IDE; they are not browser apps.
 
-## Run locally
+## Run and publish
+Open `index.html` in a modern browser or publish with GitHub Pages. No build step is required for the website. StudyKit loads React, ReactDOM, Babel and Tailwind from public CDNs, so its first load requires internet access.
 
-1. Download or clone this repository.
-2. Open the root `index.html` file in a modern browser.
-3. Choose a project from the collection.
+## Data notes
+BudgetBoard, StudyKit, CV Studio and HabitTrack save data in browser local storage. Data is not synced to a server. Export or back up saved work before clearing browser data or changing devices. BudgetBoard is a personal tracker, not financial advice. StudyKit flashcard review is a self-check, not automatic grading. C++ and C# examples keep data in memory for the current console session.
 
-No package installation or build command is needed.
-
-## Publish with GitHub Pages
-
-1. Open the repository's **Settings**.
-2. Select **Pages**.
-3. Under **Build and deployment**, choose **GitHub Actions** as the source.
-4. The included workflow (`.github/workflows/pages.yml`) will publish the site after pushes to `main`.
-5. Open the Pages URL shown in Settings after the first successful workflow run.
-
-## Project notes
-
-- **DataLens** uses generated sample records. Its numbers are illustrative and are not real organisational or personal data.
-- **FlowState** and **PromptLab** use browser local storage. Saved items are specific to the browser and device; clearing browser data may remove them.
-- **PromptLab** is a prompt-design workspace. It formats, saves and compares prompts but does not send them to an AI service.
-- **RoboRoute** compares BFS, Dijkstra and A* on an unweighted grid. Every move has equal cost; the algorithms demonstrate different exploration strategies.
-
-## Built with
-
-HTML · CSS · JavaScript · Browser APIs
-
----
+## Install
+Portfolio Labs is an installable Progressive Web App on supported browsers. This is a PWA install, not a Google Play Store release.
 
 Founded and created by **Linda (Motunrayo Linda Idowu)**.
-
-
-## Install on a phone
-
-Portfolio Labs is configured as an installable Progressive Web App (PWA). Visit the published HTTPS site in a supported browser and choose **Install app** or **Add to Home screen**. See [installation instructions](install.html). This creates an app-like home-screen experience; it is not yet a Google Play Store release.
-
-## Creator
-
-Founded and created by **Linda (Motunrayo Linda Idowu)**. The current workspaces store data in the browser. Cloud accounts, Google Calendar synchronisation and server push notifications are not connected in this release.
