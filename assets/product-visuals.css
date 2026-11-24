@@ -57,3 +57,24 @@ textarea.input,.formgrid textarea{min-height:90px}
 /* Individual product accents when the app runs without the dynamic sidebar */
 body:has(.appbar .brand[href*="sellsmart"]){--pv-accent:#16836d;--pv-soft:#e4f5ef;--product-font:'DM Sans'}
 body:has(.appbar .brand[href*="readwell"]){--pv-accent:#635bdb;--pv-soft:#efedff;--product-font:'Space Grotesk'}
+
+body.pl-product-sellsmart{--pv-accent:#16836d;--pv-soft:#e4f5ef;--product-font:'DM Sans'}
+body.pl-product-readwell{--pv-accent:#635bdb;--pv-soft:#efedff;--product-font:'Space Grotesk'}
+body.pl-product-sellsmart .app,body.pl-product-readwell .app{max-width:1500px;margin:0 auto;grid-template-columns:238px minmax(0,1fr);background:var(--pv-canvas)}
+body.pl-product-sellsmart .sidebar,body.pl-product-readwell .sidebar{position:sticky;top:70px;height:calc(100vh - 70px);padding:26px 16px;background:#111d2a;border:0;gap:18px}
+body.pl-product-sellsmart .business-name,body.pl-product-readwell .business-name{padding:17px;border:1px solid #ffffff18;border-radius:14px;background:linear-gradient(135deg,color-mix(in srgb,var(--pv-accent) 26%,#142234),#172638);color:#f5f8fb;font:700 12px/1.5 var(--product-font),sans-serif}
+body.pl-product-sellsmart .sidebar nav,body.pl-product-readwell .sidebar nav{gap:5px}
+body.pl-product-sellsmart .sidebar nav button,body.pl-product-readwell .sidebar nav button{padding:12px 13px;color:#aab8c6;border-radius:9px;font:600 12px var(--product-font),sans-serif}
+body.pl-product-sellsmart .sidebar nav button.active,body.pl-product-readwell .sidebar nav button.active,body.pl-product-sellsmart .sidebar nav button:hover,body.pl-product-readwell .sidebar nav button:hover{background:color-mix(in srgb,var(--pv-accent) 28%,#203346);color:white}
+body.pl-product-sellsmart .back,body.pl-product-readwell .back{margin-top:auto;color:#c3d0dc;font-size:11px}
+body.pl-product-sellsmart .workspace,body.pl-product-readwell .workspace{padding:clamp(22px,4vw,54px)!important}
+body.pl-product-sellsmart .pagehead,body.pl-product-readwell .pagehead{align-items:flex-end;padding:0 0 24px;margin:0 0 22px;border-bottom:1px solid var(--pv-line)}
+body.pl-product-sellsmart .pagehead h1,body.pl-product-readwell .pagehead h1{font:700 clamp(34px,4.5vw,54px)/1.04 var(--product-font),sans-serif;letter-spacing:-.06em;color:var(--pv-ink);margin:8px 0}
+body.pl-product-sellsmart .pagehead p:last-child,body.pl-product-readwell .pagehead p:last-child{font-size:14px;color:var(--pv-muted);line-height:1.75}
+body.pl-product-sellsmart .metrics,body.pl-product-readwell .metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+body.pl-product-sellsmart .metrics article,body.pl-product-readwell .metrics article{border:1px solid var(--pv-line);border-radius:16px;background:#fff;padding:19px;box-shadow:0 8px 24px #172b3b08}
+body.pl-product-sellsmart .panel,body.pl-product-readwell .panel{padding:22px;border:1px solid var(--pv-line);border-radius:16px;background:#fff;box-shadow:0 8px 24px #172b3b08}
+body.pl-product-sellsmart .panel h2,body.pl-product-readwell .panel h2{font:700 18px var(--product-font),sans-serif;letter-spacing:-.03em;color:var(--pv-ink)}
+body.pl-product-sellsmart .primary,body.pl-product-readwell .primary{background:var(--pv-accent);border-radius:10px;box-shadow:0 7px 18px color-mix(in srgb,var(--pv-accent) 20%,transparent)}
+body.pl-product-sellsmart .input,body.pl-product-readwell .input,body.pl-product-sellsmart input,body.pl-product-readwell input,body.pl-product-sellsmart select,body.pl-product-readwell select,body.pl-product-sellsmart textarea,body.pl-product-readwell textarea{border-radius:9px}
+@media(max-width:760px){body.pl-product-sellsmart .app,body.pl-product-readwell .app{grid-template-columns:1fr}body.pl-product-sellsmart .sidebar,body.pl-product-readwell .sidebar{position:relative;top:auto;height:auto;padding:10px 12px;background:#111d2a}body.pl-product-sellsmart .business-name,body.pl-product-readwell .business-name,body.pl-product-sellsmart .back,body.pl-product-readwell .back{display:none}body.pl-product-sellsmart .sidebar nav,body.pl-product-readwell .sidebar nav{display:flex;overflow-x:auto;gap:6px}body.pl-product-sellsmart .sidebar nav button,body.pl-product-readwell .sidebar nav button{white-space:nowrap;flex:0 0 auto}body.pl-product-sellsmart .workspace,body.pl-product-readwell .workspace{padding:20px 14px!important}body.pl-product-sellsmart .pagehead,body.pl-product-readwell .pagehead{align-items:flex-start;flex-direction:column}body.pl-product-sellsmart .metrics,body.pl-product-readwell .metrics{grid-template-columns:1fr}}
