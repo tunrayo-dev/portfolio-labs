@@ -8,10 +8,10 @@ Every demo runs in a modern browser. No installation, build step or API key is r
 
 | Project | What you can do |
 | --- | --- |
-| [DataLens](projects/datalens/) | Filter a sample activity dataset, review summary metrics, explore category and monthly patterns, search records and export the visible data as CSV. |
-| [FlowState](projects/flowstate/) | Create, complete, edit and organise tasks, track progress and use a focus timer. Tasks are saved locally in your browser. |
-| [PromptLab](projects/promptlab/) | Build structured prompts, load reusable templates, save versions, compare drafts and copy or download your work. It does not connect to an AI model. |
-| [RoboRoute](projects/roboroute/) | Add obstacles to a grid and watch breadth-first search explore the board and find a shortest route. |
+| [DataLens](projects/datalens/) | Explore sample data or import CSV/JSON records, filter and search them, inspect summary charts, and export the results. |
+| [FlowState](projects/flowstate/) | Schedule tasks with dates and times, use custom focus modes, enable in-tab browser reminders, back up tasks as JSON, and export due dates as calendar files. |
+| [PromptLab](projects/promptlab/) | Build structured prompts, use templates, save and compare versions, and import/export a prompt library as JSON. It does not connect to an AI model. |
+| [RoboRoute](projects/roboroute/) | Visualise BFS, Dijkstra and A* on a grid, compare exploration, adjust animation speed, and import/export maps. |
 
 ## Run locally
 
@@ -42,7 +42,7 @@ HTML · CSS · JavaScript · Browser APIs
 
 ---
 
-Created by **Motunrayo Linda Idowu**.
+Founded and created by **Linda (Motunrayo Linda Idowu)**.
 
 
 ## Install on a phone
