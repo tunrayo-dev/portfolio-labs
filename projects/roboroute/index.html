@@ -1,0 +1,248 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      RoboRoute — Grid Path Planner
+    </title>
+    <link rel="stylesheet" href="../../assets/project.css">
+    <style>
+.sim {
+  display:grid;
+  grid-template-columns:1fr 250px;
+  gap:16px
+}
+.board {
+  display:grid;
+  grid-template-columns:repeat(14,1fr);
+  gap:3px;
+  aspect-ratio:1;
+  width:100%;
+  max-width:590px;
+  margin:auto
+}
+.cell {
+  border:1px solid #e0e8ed;
+  border-radius:3px;
+  background:#f9fbfc;
+  cursor:pointer;
+  transition:background .1s
+}
+.cell.wall {
+  background:#344b5d;
+  border-color:#344b5d
+}
+.cell.start {
+  background:#a7d5bc;
+  border-color:#79b593
+}
+.cell.end {
+  background:#f1d4a4;
+  border-color:#e2b56e
+}
+.cell.path {
+  background:#b4d4ea;
+  border-color:#95bed9
+}
+.cell.visited {
+  background:#e5edf4
+}
+.cell:hover {
+  border-color:#7198b5
+}
+.controls {
+  display:grid;
+  gap:10px;
+  align-content:start
+}
+.stats {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px
+}
+.stat {
+  background:#f3f6f8;
+  border-radius:9px;
+  padding:12px
+}
+.stat label {
+  font:10px 'DM Mono';
+  color:#788690
+}
+.stat b {
+  font-size:22px;
+  display:block;
+  margin-top:6px
+}
+.legend {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  font:10px 'DM Mono';
+  color:#74818c;
+  margin-top:14px
+}
+.legend span {
+  display:flex;
+  gap:6px;
+  align-items:center
+}
+.swatch {
+  width:12px;
+  height:12px;
+  border-radius:3px;
+  display:inline-block
+}
+.swatch.start {
+  background:#a7d5bc
+}
+.swatch.end {
+  background:#f1d4a4
+}
+.swatch.wall {
+  background:#344b5d
+}
+.swatch.path {
+  background:#b4d4ea
+}
+@media(max-width:750px) {
+  .sim {
+    grid-template-columns:1fr
+  }
+  .board {
+    gap:2px
+  }
+  .controls {
+    grid-template-columns:1fr 1fr
+  }
+  .controls .panel {
+    grid-column:1/-1
+  }
+}
+    </style>
+  </head>
+  <body>
+    <nav class="top">
+      <a class="brand" href="../../index.html">
+        ML
+        <small>
+          / LABS
+        </small>
+      </a>
+      <a class="back" href="../../index.html">
+        ← ALL PROJECTS
+      </a>
+    </nav>
+    <main class="wrap">
+      <header class="hero">
+        <div>
+          <div class="eyebrow">
+            04 / ROBOTICS
+            &
+            ALGORITHMS
+          </div>
+          <h1>
+            RoboRoute
+          </h1>
+          <p>
+            Place obstacles on a grid and see how a robot can navigate from start to finish. Uses breadth-first search to find a shortest route on this unweighted grid.
+          </p>
+        </div>
+        <span class="badge">
+          PATHFINDING DEMO
+        </span>
+      </header>
+      <div class="sim">
+        <section class="panel">
+          <div id="board" class="board">
+          </div>
+          <div class="legend">
+            <span>
+              <i class="swatch start">
+              </i>
+              START
+            </span>
+            <span>
+              <i class="swatch end">
+              </i>
+              GOAL
+            </span>
+            <span>
+              <i class="swatch wall">
+              </i>
+              OBSTACLE
+            </span>
+            <span>
+              <i class="swatch path">
+              </i>
+              ROUTE
+            </span>
+          </div>
+        </section>
+        <aside class="controls">
+          <section class="panel">
+            <h2>
+              Controls
+            </h2>
+            <p class="muted">
+              Click empty tiles to place or remove obstacles. The start and goal are fixed.
+            </p>
+            <button class="btn" id="solve" style="width:100%">
+              Find route →
+            </button>
+            <button class="btn alt" id="random" style="width:100%;margin-top:8px">
+              Random obstacles
+            </button>
+            <button class="btn alt" id="clear" style="width:100%;margin-top:8px">
+              Clear board
+            </button>
+          </section>
+          <section class="panel">
+            <h3>
+              Simulation
+            </h3>
+            <div class="stats">
+              <div class="stat">
+                <label>
+                  ROUTE LENGTH
+                </label>
+                <b id="length">
+                  —
+                </b>
+              </div>
+              <div class="stat">
+                <label>
+                  CELLS VISITED
+                </label>
+                <b id="visited">
+                  —
+                </b>
+              </div>
+            </div>
+            <p class="muted" id="status" style="margin:12px 0 0">
+              Ready. Add obstacles or find a route.
+            </p>
+          </section>
+          <section class="panel">
+            <h3>
+              How it works
+            </h3>
+            <p class="muted">
+              Breadth-first search explores neighboring cells until it reaches the goal. Since every move has the same cost, the first route found is a shortest path.
+            </p>
+          </section>
+        </aside>
+      </div>
+      <footer class="foot">
+        <span>
+          RoboRoute · Interactive grid simulation
+        </span>
+        <span>
+          Pathfinding with BFS
+        </span>
+      </footer>
+    </main>
+    <script src="app.js">
+    </script>
+  </body>
+</html>
