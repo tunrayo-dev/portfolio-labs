@@ -141,3 +141,26 @@ body.labs-nav-open{overflow:hidden}
 .menu-toggle{gap:0}
 
 .labs-footer-contact{display:grid;gap:10px;max-width:420px;margin-top:18px;padding:16px;border:1px solid rgba(120,135,170,.25);border-radius:14px;background:rgba(120,135,170,.06)}.labs-footer-contact label{display:grid;gap:5px;font-size:12px}.labs-footer-contact input,.labs-footer-contact textarea{width:100%;padding:10px 12px;border:1px solid rgba(120,135,170,.35);border-radius:8px;background:rgba(255,255,255,.92);color:#182033;font:inherit}.labs-footer-contact button{justify-self:start;padding:10px 14px;border:0;border-radius:8px;background:#6557ed;color:#fff;font:inherit;font-weight:700;cursor:pointer}.labs-footer-contact small{opacity:.7;font-size:11px}
+/* Dedicated Portfolio Labs contact section */
+.labs-contact-section{position:relative;isolation:isolate;overflow:hidden;margin:clamp(64px,9vw,120px) auto 0;padding:clamp(48px,7vw,92px) clamp(20px,6vw,80px);background:linear-gradient(135deg,#111a31,#172744 62%,#172d3b);color:#f5f7fb;border-top:1px solid #ffffff12}
+.labs-contact-section:before{content:"";position:absolute;z-index:-1;width:480px;height:480px;right:-120px;top:-250px;border:1px solid #8ea8ff30;border-radius:50%;box-shadow:0 0 0 45px #8ea8ff08,0 0 0 95px #8ea8ff06}
+.labs-contact-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:minmax(240px,.85fr) minmax(320px,1.15fr);gap:clamp(35px,7vw,100px);align-items:start}
+.labs-contact-kicker{font:10px 'DM Mono',monospace;letter-spacing:.16em;color:#9aabd0}
+.labs-contact-copy h2{margin:28px 0 18px;font:700 clamp(42px,6vw,76px)/.98 'Manrope',sans-serif;letter-spacing:-.07em;color:#fff}
+.labs-contact-copy h2 em{font-style:normal;color:#9cc6e9}
+.labs-contact-copy p{max-width:360px;color:#b4c0d2;font:15px/1.8 'DM Sans',sans-serif}
+.labs-contact-copy>a{display:inline-block;margin-top:18px;color:#d8e8f8;text-decoration:none;font:12px 'DM Mono',monospace;border-bottom:1px solid #8198ba;padding-bottom:8px}
+.labs-contact-form{display:grid;gap:17px;padding:clamp(20px,3vw,32px);border:1px solid #ffffff20;border-radius:16px;background:#ffffff0b;box-shadow:0 24px 80px #050a1725;backdrop-filter:blur(12px)}
+.labs-contact-form label{display:grid;gap:8px;color:#dbe3ef;font:600 12px 'DM Sans',sans-serif}
+.labs-form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.labs-contact-form input,.labs-contact-form select,.labs-contact-form textarea{width:100%;min-width:0;padding:13px 14px;border:1px solid #ffffff25;border-radius:8px;background:#0b1426;color:#f4f7fb;font:13px 'DM Sans',sans-serif;outline:none}
+.labs-contact-form input::placeholder,.labs-contact-form textarea::placeholder{color:#8290a7}
+.labs-contact-form select{color:#e5ebf5}.labs-contact-form select:invalid{color:#8290a7}
+.labs-contact-form input:focus,.labs-contact-form select:focus,.labs-contact-form textarea:focus{border-color:#8fb9ed;box-shadow:0 0 0 3px #8fb9ed20}
+.labs-contact-form textarea{resize:vertical;min-height:120px;line-height:1.6}
+.labs-form-submit{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.labs-form-submit button{display:inline-flex;align-items:center;gap:24px;padding:13px 17px;border:0;border-radius:8px;background:#d8eaff;color:#12223c;font:700 12px 'DM Sans',sans-serif;cursor:pointer}
+.labs-form-submit button:hover{background:#fff;transform:translateY(-1px)}
+.labs-form-submit small{max-width:230px;color:#9eabc0;font:10px/1.6 'DM Sans',sans-serif}
+.site-footer{margin-top:0}
+@media(max-width:760px){.labs-contact-section{margin-top:58px;padding:55px 20px}.labs-contact-inner{grid-template-columns:1fr;gap:30px}.labs-contact-copy h2{margin:18px 0 12px}.labs-contact-form{padding:18px}.labs-form-row{grid-template-columns:1fr}.labs-form-submit{align-items:flex-start;flex-direction:column;gap:10px}}
