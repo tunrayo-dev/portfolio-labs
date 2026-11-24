@@ -152,3 +152,7 @@ body.labs-nav-open{overflow:hidden}
 .labs-footer-bottom strong{color:#53616b;font-weight:700}.labs-footer-bottom a{color:#68747d;text-decoration:none}
 @media(max-width:760px){.top{height:68px;min-height:68px;padding-inline:18px}.nav-desktop-link{display:none}.labs-footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:27px 20px;padding-bottom:30px}.labs-footer-brand{grid-column:1/-1;max-width:420px}.site-footer{margin-top:48px;padding:34px 20px 18px}.labs-footer-bottom{align-items:flex-start;flex-direction:column;gap:6px}}
 @media(max-width:380px){.labs-footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 13px}.labs-footer-group a{font-size:12px}.labs-footer-brand{grid-column:1/-1}}
+
+
+.menu-toggle .menu-dots{display:block;width:auto;height:auto;background:none;font:700 27px/1 'DM Sans',sans-serif;color:#27343d;transform:translateY(-1px)}
+.menu-toggle{gap:0}
