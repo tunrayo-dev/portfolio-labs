@@ -130,9 +130,7 @@
         <h2>
           Explore the dataset
         </h2>
-        <p class="muted">
-          Adjust filters to update the view.
-        </p>
+        <p class="muted">Use the sample dataset or import your own CSV or JSON file. Imported rows are processed in this browser.</p><div class="filters"><label class="btn alt" for="dataFile" style="cursor:pointer">Import CSV / JSON</label><input id="dataFile" type="file" accept=".csv,.json,text/csv,application/json" hidden><button class="btn alt" id="sampleData">Restore sample data</button><button class="btn alt" id="exportData">Export current data</button><span id="fileNote" class="muted" aria-live="polite"></span></div><p class="muted">For best automatic mapping, include columns named date, category, activity (or name/title), and score/value.</p>
         <div class="filters">
           <select id="category">
             <option value="all">
