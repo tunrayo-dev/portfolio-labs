@@ -139,3 +139,5 @@ body.labs-nav-open{overflow:hidden}
 
 .menu-toggle .menu-dots{display:block;width:auto;height:auto;background:none;font:700 27px/1 'DM Sans',sans-serif;color:#27343d;transform:translateY(-1px)}
 .menu-toggle{gap:0}
+
+.labs-footer-contact{display:grid;gap:10px;max-width:420px;margin-top:18px;padding:16px;border:1px solid rgba(120,135,170,.25);border-radius:14px;background:rgba(120,135,170,.06)}.labs-footer-contact label{display:grid;gap:5px;font-size:12px}.labs-footer-contact input,.labs-footer-contact textarea{width:100%;padding:10px 12px;border:1px solid rgba(120,135,170,.35);border-radius:8px;background:rgba(255,255,255,.92);color:#182033;font:inherit}.labs-footer-contact button{justify-self:start;padding:10px 14px;border:0;border-radius:8px;background:#6557ed;color:#fff;font:inherit;font-weight:700;cursor:pointer}.labs-footer-contact small{opacity:.7;font-size:11px}
