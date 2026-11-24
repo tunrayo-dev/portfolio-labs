@@ -1,0 +1,243 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      DataLens — Interactive Data Explorer
+    </title>
+    <link rel="stylesheet" href="../../assets/project.css">
+    <style>
+.chart {
+  height:230px;
+  width:100%
+}
+.chart svg {
+  width:100%;
+  height:100%;
+  overflow:visible
+}
+.legend {
+  font:10px 'DM Mono';
+  color:#74818c
+}
+.bars {
+  display:flex;
+  gap:10px;
+  align-items:end;
+  height:170px;
+  padding:12px 5px
+}
+.bar {
+  flex:1;
+  background:linear-gradient(180,#7198b6,#b9d0e0);
+  border-radius:5px 5px 0 0;
+  position:relative;
+  min-width:12px
+}
+.bar:hover {
+  background:#496e8d
+}
+.bar span {
+  position:absolute;
+  bottom:-24px;
+  width:100%;
+  text-align:center;
+  font:9px 'DM Mono';
+  color:#84909a
+}
+.filters {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:14px 0
+}
+.filters select {
+  max-width:190px
+}
+.trend {
+  height:160px;
+  display:flex;
+  align-items:end;
+  gap:6px
+}
+.trend i {
+  flex:1;
+  background:#a5c0d5;
+  border-radius:4px 4px 0 0;
+  min-width:6px
+}
+.trend i:nth-child(3n) {
+  background:#527c9f
+}
+    </style>
+  </head>
+  <body>
+    <nav class="top">
+      <a class="brand" href="../../index.html">
+        ML
+        <small>
+          / LABS
+        </small>
+      </a>
+      <a class="back" href="../../index.html">
+        ← ALL PROJECTS
+      </a>
+    </nav>
+    <main class="wrap">
+      <header class="hero">
+        <div>
+          <div class="eyebrow">
+            01 / DATA EXPLORATION
+          </div>
+          <h1>
+            DataLens
+          </h1>
+          <p>
+            Explore a sample dataset, filter it, and look for patterns. This dashboard uses synthetic data for a demo.
+          </p>
+        </div>
+        <span class="badge">
+          INTERACTIVE DEMO
+        </span>
+      </header>
+      <div class="kpis">
+        <div class="kpi">
+          <label>
+            Total records
+          </label>
+          <strong id="total">
+            —
+          </strong>
+        </div>
+        <div class="kpi">
+          <label>
+            Avg. score
+          </label>
+          <strong id="avg">
+            —
+          </strong>
+        </div>
+        <div class="kpi">
+          <label>
+            Top category
+          </label>
+          <strong id="top">
+            —
+          </strong>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>
+          Explore the dataset
+        </h2>
+        <p class="muted">
+          Adjust filters to update the view.
+        </p>
+        <div class="filters">
+          <select id="category">
+            <option value="all">
+              All categories
+            </option>
+            <option>
+              Learning
+            </option>
+            <option>
+              Community
+            </option>
+            <option>
+              Technology
+            </option>
+            <option>
+              Wellbeing
+            </option>
+          </select>
+          <select id="month">
+            <option value="all">
+              All months
+            </option>
+            <option>
+              Jan
+            </option>
+            <option>
+              Feb
+            </option>
+            <option>
+              Mar
+            </option>
+            <option>
+              Apr
+            </option>
+            <option>
+              May
+            </option>
+            <option>
+              Jun
+            </option>
+          </select>
+          <button class="btn alt" id="reset">
+            Reset filters
+          </button>
+        </div>
+        <div class="grid two">
+          <section>
+            <h3>
+              Activity by category
+            </h3>
+            <div id="bars" class="bars">
+            </div>
+            <p class="legend">
+              Number of sample records per category
+            </p>
+          </section>
+          <section>
+            <h3>
+              Monthly activity
+            </h3>
+            <div id="trend" class="trend">
+            </div>
+            <p class="legend">
+              Sample records grouped by month
+            </p>
+          </section>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:16px">
+        <h2>
+          Records
+        </h2>
+        <div style="overflow:auto">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  DATE
+                </th>
+                <th>
+                  CATEGORY
+                </th>
+                <th>
+                  ACTIVITY
+                </th>
+                <th>
+                  SCORE
+                </th>
+              </tr>
+            </thead>
+            <tbody id="rows">
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <footer class="foot">
+        <span>
+          DataLens · Sample dataset
+        </span>
+        <span>
+          Built with JavaScript
+        </span>
+      </footer>
+    </main>
+    <script src="app.js">
+    </script>
+  </body>
+</html>
