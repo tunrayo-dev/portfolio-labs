@@ -1,12 +1,45 @@
-# Motunrayo's Portfolio Labs
+# Portfolio Labs — Motunrayo Linda Idowu
 
-Four browser-based portfolio projects built with HTML, CSS and JavaScript. No install, build step, API key or terminal required.
+A collection of browser-based projects exploring software development, data analysis, interface design, prompt engineering and computational thinking.
 
-## Projects
-- **DataLens** — interactive analytics dashboard with filters, KPI cards, charts, and data table.
-- **FlowState** — task and focus planner with local persistence, priorities and progress.
-- **PromptLab** — prompt builder and comparison workspace; it does not claim to call an AI model.
-- **RoboRoute** — grid-based robot route planner with obstacles and pathfinding.
+Every demo runs in a modern browser. No installation, build step or API key is required.
 
-## Run
-Open `index.html` in a browser, or publish the folder using GitHub Pages. All demos are static and run in the browser.
+## Explore the projects
+
+| Project | What you can do |
+| --- | --- |
+| [DataLens](projects/datalens/) | Filter a sample activity dataset, review summary metrics, explore category and monthly patterns, search records and export the visible data as CSV. |
+| [FlowState](projects/flowstate/) | Create, complete, edit and organise tasks, track progress and use a focus timer. Tasks are saved locally in your browser. |
+| [PromptLab](projects/promptlab/) | Build structured prompts, load reusable templates, save versions, compare drafts and copy or download your work. It does not connect to an AI model. |
+| [RoboRoute](projects/roboroute/) | Add obstacles to a grid and watch breadth-first search explore the board and find a shortest route. |
+
+## Run locally
+
+1. Download or clone this repository.
+2. Open the root `index.html` file in a modern browser.
+3. Choose a project from the collection.
+
+No package installation or build command is needed.
+
+## Publish with GitHub Pages
+
+1. Open the repository's **Settings**.
+2. Select **Pages**.
+3. Under the build and deployment section, choose **Deploy from a branch**.
+4. Select the `main` branch and the `/(root)` folder, then save.
+5. Open the Pages URL shown there after deployment finishes.
+
+## Project notes
+
+- **DataLens** uses generated sample records. Its numbers are illustrative and are not real organisational or personal data.
+- **FlowState** and **PromptLab** use browser local storage. Saved items are specific to the browser and device; clearing browser data may remove them.
+- **PromptLab** is a prompt-design workspace. It formats, saves and compares prompts but does not send them to an AI service.
+- **RoboRoute** demonstrates breadth-first search (BFS) on an unweighted grid. Each move has the same cost, so BFS finds a shortest route when one exists.
+
+## Built with
+
+HTML · CSS · JavaScript · Browser APIs
+
+---
+
+Created by **Motunrayo Linda Idowu**.
