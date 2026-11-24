@@ -17,8 +17,11 @@ A collection of practical browser tools and native source-code projects.
 ## Native code projects
 - `code-projects/cpp/expense-tracker.cpp` — C++17 console expense tracker.
 - `code-projects/csharp/study-cards.cs` — C# console flashcard app.
+- `code-projects/python/csv-insights.py` — Python CSV category summary tool.
+- `code-projects/typescript/task-board.ts` — typed task manager class.
+- `code-projects/sql/community-learning-hub.sql` — PostgreSQL schema and reporting queries.
 
-C++ and C# source projects run locally in a compiler or IDE; they are not browser apps.
+C++, C# and TypeScript source projects are opened in their respective compiler or runtime. Python scripts run with Python 3, and SQL is run in PostgreSQL. These source examples are not browser apps.
 
 ## Run and publish
 Open `index.html` in a modern browser or publish with GitHub Pages. No build step is required for the website. StudyKit loads React, ReactDOM, Babel and Tailwind from public CDNs, so its first load requires internet access.
