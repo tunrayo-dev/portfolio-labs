@@ -5,7 +5,7 @@
     <title>
       RoboRoute — Grid Path Planner
     </title>
-    <link rel="stylesheet" href="../../assets/project.css">
+    <link rel="stylesheet" href="../../assets/project.css"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <style>
 .sim {
   display:grid;
@@ -215,8 +215,9 @@
         </aside>
       </div>
       
+    <section class="panel" id="realRoute" style="margin-top:20px"><h2>Lagos route explorer</h2><p class="muted">Look up two places and view a road route. This uses OpenStreetMap geocoding and the public OSRM demo router; it does not include live traffic or verified night-safety information.</p><div class="grid two"><label class="label">START LOCATION<input class="input" id="routeFrom" value="Akoka, Lagos, Nigeria"></label><label class="label">DESTINATION<input class="input" id="routeTo" value="Yaba, Lagos, Nigeria"></label></div><div class="btnrow" style="margin:12px 0"><button class="btn" id="routeSearch">Find road route</button><button class="btn alt" id="routeClear">Clear route</button></div><div id="lagosMap" style="height:360px;border-radius:12px;background:#e8edf0;overflow:hidden"></div><p id="routeStatus" class="muted" aria-live="polite">Enter two places in Lagos, then find a route.</p><div id="routeSteps" class="tool-list"></div></section>
     </main>
-    <script src="../../assets/pwa.js"></script><script src="app.js">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="../../assets/pwa.js"></script><script src="app.js">
     </script>
   <footer class="site-footer"><div class="footer-main"><div class="footer-brand"><a class="brand" href="../../index.html">MLI <span>/ LABS</span></a><p>Useful digital tools, thoughtful experiments and practical projects — built to make everyday work a little easier.</p><p class="footer-invite">Have a question, an idea or a collaboration in mind? I’d love to hear from you.</p><a class="footer-email" href="mailto:motunrayoidowu57@gmail.com">Email me ↗</a></div><div class="footer-col"><strong>Explore</strong><a href="../../projects/index.html">All projects</a><a href="../../code-projects/index.html">Code projects</a><a href="../../install.html">Install on your device</a><a href="../../privacy.html">Privacy notes</a></div><div class="footer-col footer-social"><strong>Connect with me</strong><a href="https://www.instagram.com/tunraayo_idowu/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://ng.linkedin.com/in/motunrayo-idowu-373330258" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://www.facebook.com/tunraayolinda/" target="_blank" rel="noopener noreferrer">Facebook ↗</a><a href="https://github.com/tunrayo-dev" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://tunrayo-dev.github.io/linda-dev/" target="_blank" rel="noopener noreferrer">Personal website ↗</a></div></div><div class="footer-bottom"><span>Founded and created by <strong>Linda (Motunrayo Linda Idowu)</strong>.</span><span>© 2026 Portfolio Labs</span></div></footer><script src="../../assets/site-shell.js" defer></script></body>
 </html>
