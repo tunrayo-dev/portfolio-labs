@@ -15,3 +15,12 @@ html,body{background:#f5f7ff!important;color:#111a35!important}
 .site-footer{background:#101936!important;border-color:#28365c!important}.labs-footer-brand p,.labs-footer-group a,.labs-footer-contact{color:#b5bfd8!important}.labs-footer-group h3{color:#fff!important}.labs-footer-bottom{border-color:#ffffff20!important}.labs-footer-bottom span,.labs-footer-bottom a{color:#aeb9d4!important}
 .labs-nav-panel{background:#f8faff!important}.labs-nav-search{background:#fff!important}.labs-search-result{background:#fff!important;border-color:#e0e6f4!important}
 @media(max-width:760px){.product-screen{height:390px!important}.mock-app{grid-template-columns:38px 1fr}.mock-side{gap:13px}.mock-side i{width:15px;height:15px}.mock-main h4{margin:10px 0 16px}.mock-metrics{gap:8px}.mock-footer{font-size:8px}}
+
+
+/* Vivid launch polish */
+:root{--accent:#5b4bff;--accent-rgb:91,75,255}
+.cinema-hero{background:radial-gradient(ellipse at 78% 32%,#a8f5ff 0,transparent 32%),radial-gradient(ellipse at 68% 72%,#c8b9ff 0,transparent 38%),radial-gradient(ellipse at 16% 88%,#ffd7ed 0,transparent 27%),linear-gradient(120deg,#fbfbff,#edf6ff 55%,#f7f0ff)!important}
+.cinema-hero h1 em,.intro-strip em,.work-intro h2 em,.source-world h2 em,.final-note h2 em{background:linear-gradient(95deg,#5b4bff,#00b9d6 55%,#ed63b7)!important;background-clip:text!important;-webkit-background-clip:text!important}
+.product-screen{height:clamp(270px,34vw,420px)!important;background:linear-gradient(140deg,#e8edff,#d7faff 52%,#f7e5ff)!important}
+.preview-mock{background:radial-gradient(ellipse at 85% 10%,#aeefffaa,transparent 40%),radial-gradient(ellipse at 10% 90%,#e4d8ff99,transparent 36%),linear-gradient(135deg,#f8f9ff,#e7f1ff 55%,#f9efff)!important}
+@media(max-width:760px){.product-screen{height:300px!important}.product-showcase{padding-top:45px!important;padding-bottom:45px!important}}
