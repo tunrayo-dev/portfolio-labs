@@ -1,86 +1,11 @@
-const R=14,C=14,S= {
-  r:0,c:0
-}
-,G= {
-  r:13,c:13
-}
+const ROWS=14,COLS=14,START={r:0,c:0},GOAL={r:13,c:13};
 let walls=new Set(),path=new Set(),visited=new Set();
-const board=document.getElementById('board'),id=(r,c)=>r*C+c,key=(r,c)=>`${r},${c}`;
-function draw() {
-  board.innerHTML='';
-  for(let r=0;r<R;r++)for(let c=0;c<C;c++) {
-    let k=key(r,c),el=document.createElement('button');
-    el.className='cell';
-    el.setAttribute('aria-label',`row ${r+1}, column ${c+1}`);
-    el.title=`${r+1}, ${c+1}`;
-    if(r===S.r&&c===S.c)el.classList.add('start');
-    else if(r===G.r&&c===G.c)el.classList.add('end');
-    else if(walls.has(k))el.classList.add('wall');
-    else if(path.has(k))el.classList.add('path');
-    else if(visited.has(k))el.classList.add('visited');
-    el.onclick=()=> {
-      if((r===S.r&&c===S.c)||(r===G.r&&c===G.c))return;
-      walls.has(k)?walls.delete(k):walls.add(k);
-      path.clear();
-      visited.clear();
-      document.getElementById('length').textContent='—';
-      document.getElementById('visited').textContent='—';
-      document.getElementById('status').textContent='Board changed. Find a new route.';
-      draw()
-    }
-    board.appendChild(el)
-  }
-}
-function bfs() {
-  let q=[[S.r,S.c]],prev=new Map(),seen=new Set([key(S.r,S.c)]),dirs=[[1,0],[-1,0],[0,1],[0,-1]],target=key(G.r,G.c);
-  while(q.length) {
-    let [r,c]=q.shift(),k=key(r,c);
-    if(k===target)break;
-    for(let [dr,dc] of dirs) {
-      let nr=r+dr,nc=c+dc,nk=key(nr,nc);
-      if(nr<0||nc<0||nr>=R||nc>=C||walls.has(nk)||seen.has(nk))continue;
-      seen.add(nk);
-      prev.set(nk,k);
-      q.push([nr,nc])
-    }
-  }
-  visited=seen;
-  if(!seen.has(target)) {
-    path.clear();
-    return false
-  }
-  path=new Set();
-  let cur=target;
-  while(cur!==key(S.r,S.c)) {
-    path.add(cur);
-    cur=prev.get(cur)
-  }
-  return true
-}
-document.getElementById('solve').onclick=()=> {
-  let found=bfs();
-  draw();
-  document.getElementById('length').textContent=found?path.size:'0';
-  document.getElementById('visited').textContent=visited.size;
-  document.getElementById('status').textContent=found?'Route found! The highlighted path is a shortest route.':'No route available. Try removing a few obstacles.'
-}
-document.getElementById('random').onclick=()=> {
-  walls.clear();
-  path.clear();
-  visited.clear();
-  for(let r=0;r<R;r++)for(let c=0;c<C;c++)if(!(r===0&&c===0)&&!(r===13&&c===13)&&Math.random()<.19)walls.add(key(r,c));
-  draw();
-  document.getElementById('length').textContent='—';
-  document.getElementById('visited').textContent='—';
-  document.getElementById('status').textContent='Random obstacles added.'
-}
-document.getElementById('clear').onclick=()=> {
-  walls.clear();
-  path.clear();
-  visited.clear();
-  draw();
-  document.getElementById('length').textContent='—';
-  document.getElementById('visited').textContent='—';
-  document.getElementById('status').textContent='Board cleared.'
-}
+const $=id=>document.getElementById(id),board=$('board'),key=(r,c)=>r+','+c;
+function resetStats(message){$('length').textContent='—';$('visited').textContent='—';$('status').textContent=message}
+function draw(){board.replaceChildren();for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){const k=key(r,c),cell=document.createElement('button');cell.type='button';cell.className='cell';cell.setAttribute('aria-label','Row '+(r+1)+', column '+(c+1)+(r===START.r&&c===START.c?', start':r===GOAL.r&&c===GOAL.c?', goal':walls.has(k)?', obstacle':path.has(k)?', route':visited.has(k)?', visited':''));cell.title='Row '+(r+1)+', column '+(c+1);if(r===START.r&&c===START.c){cell.classList.add('start');cell.textContent='S'}else if(r===GOAL.r&&c===GOAL.c){cell.classList.add('end');cell.textContent='G'}else if(walls.has(k))cell.classList.add('wall');else if(path.has(k))cell.classList.add('path');else if(visited.has(k))cell.classList.add('visited');cell.disabled=(r===START.r&&c===START.c)||(r===GOAL.r&&c===GOAL.c);cell.addEventListener('click',()=>{if(walls.has(k))walls.delete(k);else walls.add(k);path.clear();visited.clear();resetStats('Board changed. Find a new route.');draw()});board.append(cell)}}
+function bfs(){const queue=[[START.r,START.c]],previous=new Map(),seen=new Set([key(START.r,START.c)]),directions=[[1,0],[-1,0],[0,1],[0,-1]],target=key(GOAL.r,GOAL.c);let head=0;while(head<queue.length){const [r,c]=queue[head++],current=key(r,c);if(current===target)break;for(const [dr,dc] of directions){const nr=r+dr,nc=c+dc,next=key(nr,nc);if(nr<0||nc<0||nr>=ROWS||nc>=COLS||walls.has(next)||seen.has(next))continue;seen.add(next);previous.set(next,current);queue.push([nr,nc])}}visited=seen;path.clear();if(!seen.has(target))return false;let current=target;while(current!==key(START.r,START.c)){path.add(current);current=previous.get(current)}return true}
+function solve(){const found=bfs();draw();$('length').textContent=found?path.size:'0';$('visited').textContent=visited.size;$('status').textContent=found?'Shortest route found. The blue tiles show the path.':'No route exists with the current obstacles. Remove some obstacles and try again.'}
+$('solve').addEventListener('click',solve);
+$('random').addEventListener('click',()=>{walls.clear();path.clear();visited.clear();for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)if(!(r===START.r&&c===START.c)&&!(r===GOAL.r&&c===GOAL.c)&&Math.random()<.19)walls.add(key(r,c));resetStats('Random obstacles added. Find a route when ready.');draw()});
+$('clear').addEventListener('click',()=>{walls.clear();path.clear();visited.clear();resetStats('Board cleared. Add obstacles or find a route.');draw()});
 draw();
