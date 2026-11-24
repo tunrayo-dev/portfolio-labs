@@ -1,1 +1,24 @@
-{"name":"Portfolio Labs","short_name":"Labs","description":"Practical workspaces for focus, data, prompts and pathfinding.","start_url":"./index.html","scope":"./","display":"standalone","background_color":"#f5f7f8","theme_color":"#17212b","icons":[{"src":"assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+{
+  "name": "Portfolio Labs",
+  "short_name": "Labs",
+  "description": "Practical workspaces for focus, data, prompts and pathfinding. Created by Linda.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f7f8",
+  "theme_color": "#17212b",
+  "categories": [
+    "productivity",
+    "education",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
