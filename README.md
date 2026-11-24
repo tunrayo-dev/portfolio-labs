@@ -43,3 +43,12 @@ HTML · CSS · JavaScript · Browser APIs
 ---
 
 Created by **Motunrayo Linda Idowu**.
+
+
+## Install on a phone
+
+Portfolio Labs is configured as an installable Progressive Web App (PWA). Visit the published HTTPS site in a supported browser and choose **Install app** or **Add to Home screen**. See [installation instructions](install.html). This creates an app-like home-screen experience; it is not yet a Google Play Store release.
+
+## Creator
+
+Founded and created by **Linda (Motunrayo Linda Idowu)**. The current workspaces store data in the browser. Cloud accounts, Google Calendar synchronisation and server push notifications are not connected in this release.
