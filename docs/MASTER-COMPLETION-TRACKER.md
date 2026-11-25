@@ -18,9 +18,9 @@ This is the source of truth for the rebuild. A feature is not marked **tested** 
 | Google sign-in | Needs setup | Configure Google OAuth provider and redirect URLs, then add UI flow |
 | Profile metadata | Implemented | Test profile creation/update and error handling |
 | Profile table | Needs verification | Confirm schema, policies, and profile row creation |
-| Cloud workspace table | Needs setup | Apply `supabase/migrations/20261125000200_workspace_records.sql` |
-| Shared cloud adapter | Implemented | Integrate with each product and test account isolation |
-| Cross-device sync | Not started | Add load/save, conflict handling, offline queue, and multi-device tests |
+| Cloud workspace table | Applied (RLS verified) | Live account/data isolation tests still required |
+| Shared cloud adapter | Implemented | Remaining product integrations and account-isolation tests |
+| Cross-device sync | Implemented for FlowState + HabitTrack (initial pass) | Validate live sync, conflict behavior, offline recovery, deletion recovery and two-device isolation; extend to remaining products |
 | Cloud file storage | Not started | Define private buckets, size/type limits, signed URLs, and RLS |
 | Account data export | Partial | Include product records and supported files |
 | Account deletion | Not started | Add a secure deletion flow and document retention effects |
@@ -31,8 +31,8 @@ This is the source of truth for the rebuild. A feature is not marked **tested** 
 
 | Product | Existing foundation | Remaining work |
 |---|---|---|
-| FlowState | Tasks, focus timer, history and local storage | Cloud sync, reliable reminders, settings, full task/focus tests |
-| HabitTrack | Habit check-ins, history and browser notifications | Cloud sync, reminder lifecycle, permission/error states, tests |
+| FlowState | Tasks, focus timer, history, moods and calendar; cloud-sync module committed | Live cross-device testing, conflict/recovery review, reliable reminder lifecycle, settings and task/focus tests |
+| HabitTrack | Habit check-ins, history and browser notifications; cloud-sync module committed | Live sync tests, reminder lifecycle, permission/error states and deletion/recovery tests |
 | ReadWell Learn Suite | ReadWell study workspace and AI-helper prompt area | Confirm suite boundaries, cloud sync, revision workflows, saved history, AI provider integration if desired |
 | StudyKit | Flashcards, review flow, import/export and local storage | Cloud sync, robust CSV parsing, shared decks only with explicit sharing controls |
 | PromptLab | Prompt builder, templates and saved local prompts | Cloud sync, version history, AI provider integration (not just prompt drafting) |
