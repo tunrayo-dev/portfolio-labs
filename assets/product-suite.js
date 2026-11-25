@@ -20,7 +20,7 @@ function openSettings(){ $('#workspaceName').value=profile.name||'';$('#workspac
 $('#workspaceSettings').addEventListener('click',openSettings);$('#workspaceClose').addEventListener('click',()=>dialog.hidden=true);dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.hidden=true});
 $('#workspaceSave').addEventListener('click',()=>{profile={name:$('#workspaceName').value.trim(),currency:$('#workspaceCurrency').value,language:$('#workspaceLanguage').value,theme:$('#workspaceTheme').value};saveProfile();dialog.hidden=true;$('#workspaceState').textContent=(profile.name?'Hello, '+profile.name+' · ':'')+'Private workspace · saved on this device'});
 saveProfile();
-const allowed=/^(flowstate-|flowstate|pl\.|promptlab-|promptlab|cvstudio|habittrack|roboroute|datalens)/i;
+const allowed=/^(flowstate-|flowstate|pl\.|promptlab-|promptlab|cvstudio|habittrack|roboroute|datalens|readwell-v2|sellsmart-ng-v2)/i;
 function backup(){const data={product:app,createdAt:new Date().toISOString(),storage:Object.fromEntries(Object.keys(localStorage).filter(k=>allowed.test(k)).map(k=>[k,localStorage.getItem(k)]))};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='portfolio-labs-'+page+'-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 $('#workspaceBackup').addEventListener('click',backup);
 const restore=document.createElement('label');restore.style.cssText='display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;cursor:pointer';restore.innerHTML='Restore backup <input type="file" accept=".json,application/json" hidden>';$('#workspaceBackup').after(restore);
