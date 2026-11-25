@@ -39,6 +39,17 @@
     return data || null;
   }
 
+  async function loadAll(product) {
+    if (!allowedProducts.has(product)) throw new Error('Unknown Portfolio Labs product.');
+    const user = await getUser();
+    const { data, error } = await client.from(table)
+      .select('record_key, payload, updated_at')
+      .eq('owner_id', user.id)
+      .eq('product_key', product);
+    if (error) throw error;
+    return data || [];
+  }
+
   async function save(product, recordKey, payload) {
     validate(product, recordKey);
     const user = await getUser();
@@ -68,6 +79,7 @@
   root.PortfolioCloud = Object.freeze({
     available: () => !!client,
     load,
+    loadAll,
     save,
     remove
   });
