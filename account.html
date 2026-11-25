@@ -55,7 +55,7 @@
   $('connectionStatus').textContent='SUPABASE CONNECTED';
   $('signUpForm').addEventListener('submit',async e=>{
     e.preventDefault();const f=new FormData(e.currentTarget);
-    const {data,error}=await client.auth.signUp({email:String(f.get('email')).trim(),password:String(f.get('password')),{options:{data:{full_name:String(f.get('full_name')).trim()},emailRedirectTo:redirectTo}}});
+    const {data,error}=await client.auth.signUp({email:String(f.get('email')).trim(),password:String(f.get('password')),options:{data:{full_name:String(f.get('full_name')).trim()},emailRedirectTo:redirectTo}});
     if(error){say(error.message,true);return;}
     say(data.session?'Account created. You are signed in.':'Account created. Check your inbox for the confirmation email.');
     await refreshSession();
