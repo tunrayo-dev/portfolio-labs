@@ -31,3 +31,6 @@
 }
 @media(max-width:520px){.ps-mobile-toggle{margin:10px 12px 0}.product-content>main:not(.app){padding-inline:14px}}
 @media(prefers-reduced-motion:reduce){.product-sidebar{transition:none}}
+
+@media(max-width:920px){.ps-mobile-toggle{width:44px;height:44px;min-width:44px;margin:12px 18px 0;padding:0;justify-content:center;border-radius:11px}.ps-toggle-end{display:none}.ps-mobile-toggle .ps-hamburger{display:flex;width:18px;flex-direction:column;gap:4px}.ps-mobile-toggle .ps-hamburger i{display:block;width:18px;height:2px;border-radius:2px;background:currentColor}}
+@media(max-width:520px){.ps-mobile-toggle{margin:10px 12px 0}}
