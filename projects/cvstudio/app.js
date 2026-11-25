@@ -9,5 +9,6 @@ $('saveVersion').onclick=()=>{let name=prompt('Name this CV version:');if(!name?
 function versions(){saved=JSON.parse(localStorage.getItem('pl.cv.versions')||'{}');$('cvVersions').innerHTML='<option value="">Current draft</option>'+Object.keys(saved).map(n=>'<option>'+esc(n)+'</option>').join('')}
 $('cvVersions').onchange=()=>{let x=saved[$('cvVersions').value];if(x)ids.forEach(id=>$(id).value=x[id]||'');render()};
 
-$('print').onclick=()=>{render();PortfolioPDF.print($('preview'),(values().name||'CV')+' — CV')};\n$('savePdf').onclick=async()=>{render();$('status').textContent='Preparing your PDF…';try{await PortfolioPDF.save($('preview'),((values().name||'cv-studio').trim().replace(/[^a-z0-9-_]+/gi,'-')||'cv-studio')+'.pdf');$('status').textContent='PDF saved. Your draft is still separate — use Save draft to store it in this browser.'}catch(error){$('status').textContent=error.message}};
+$('print').onclick=()=>{render();PortfolioPDF.print($('preview'),(values().name||'CV')+' — CV')};
+$('savePdf').onclick=async()=>{render();$('status').textContent='Preparing your PDF…';try{await PortfolioPDF.save($('preview'),((values().name||'cv-studio').trim().replace(/[^a-z0-9-_]+/gi,'-')||'cv-studio')+'.pdf');$('status').textContent='PDF saved. Your draft is still separate — use Save draft to store it in this browser.'}catch(error){$('status').textContent=error.message}};
 try{let x=JSON.parse(localStorage.getItem('pl.cv.v1')||'null');if(x)ids.forEach(id=>$(id).value=x[id]||'')}catch{}versions();render()})();
