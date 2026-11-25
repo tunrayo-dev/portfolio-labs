@@ -38,10 +38,8 @@ select extname, extversion
 from pg_extension
 order by extname;
 
--- 5) Scheduled jobs (pg_cron, if installed)
-select jobid, jobname, schedule, active, command
-from cron.job
-order by jobname;
+-- 5) Scheduled jobs (run separately only if pg_cron is installed)
+-- select jobid, jobname, schedule, active, command from cron.job order by jobname;
 
 -- 6) Check for tables without RLS (public schema)
 select n.nspname as schema_name, c.relname as table_name
