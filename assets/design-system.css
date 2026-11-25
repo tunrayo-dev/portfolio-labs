@@ -549,3 +549,140 @@ table{max-width:100%;border-collapse:collapse}
   html{scroll-behavior:auto}
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+
+/* =========================================================
+   Responsive repair — wrap first, then stack when space runs out.
+   These rules target real content width, not device labels, so
+   narrow split-screen windows behave like compact tablets.
+   ========================================================= */
+:where(.account-nav,.dashboard-heading,.panel-heading,.calendar-heading,
+  .calendar-toolbar,.preference-row,.security-row,.event-row,.record-item,
+  .connection-card,.connection-actions,.form-actions,.calendar-controls){
+  min-width:0;
+  max-width:100%;
+  flex-wrap:wrap;
+}
+:where(.account-nav,.dashboard-heading,.panel-heading,.calendar-heading,
+  .calendar-toolbar,.preference-row,.security-row,.event-row,.record-item,
+  .connection-card)>*{
+  min-width:0;
+  max-width:100%;
+}
+.account-nav{
+  height:auto!important;
+  min-height:54px;
+  align-items:center;
+  row-gap:10px;
+  padding-block:10px 15px;
+}
+.account-nav .account-brand{flex:1 1 180px;min-width:0}
+.account-nav .account-home,.account-nav .theme-toggle{flex:0 1 auto}
+.dashboard-heading,.panel-heading,.calendar-heading,.calendar-toolbar{
+  justify-content:space-between;
+  align-items:flex-start;
+  row-gap:14px;
+}
+.dashboard-heading>div,.panel-heading>div,.calendar-heading>div,
+.calendar-toolbar>div{flex:1 1 240px;min-width:0}
+.panel-heading>button,.dashboard-heading>.site-link,
+.calendar-heading>button{flex:0 1 auto;max-width:100%;white-space:normal}
+:where(.preference-row,.security-row,.event-row,.record-item,.connection-card){
+  align-items:flex-start;
+  justify-content:space-between;
+  row-gap:12px;
+}
+:where(.preference-row,.security-row,.event-row,.record-item,.connection-card)>:first-child{
+  flex:1 1 220px;
+}
+:where(.event-actions,.connection-actions){
+  min-width:0;
+  max-width:100%;
+  flex:0 1 auto;
+  flex-wrap:wrap;
+}
+:where(.event-actions,.connection-actions)>*{min-width:0;max-width:100%}
+.connection-status{white-space:normal;overflow-wrap:anywhere}
+.calendar-summary{
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));
+}
+.calendar-form{
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));
+}
+.calendar-form .full{grid-column:1/-1}
+.calendar-controls{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.calendar-controls .calendar-select{margin-left:auto;min-width:0;max-width:100%}
+:where(.calendar-grid,.calendar-weekdays){min-width:0;width:100%}
+:where(.calendar-grid)>*,:where(.calendar-weekdays)>*{min-width:0}
+:where(.calendar-day,.day-event){overflow-wrap:anywhere}
+:where(.calendar-day){padding:clamp(2px,1vw,8px)}
+:where(.day-event){white-space:normal;line-height:1.25;max-height:2.6em}
+:where(.account-form,.profile-grid,.calendar-form) label{min-width:0;max-width:100%}
+:where(.account-form,.profile-grid,.calendar-form) input,
+:where(.account-form,.profile-grid,.calendar-form) select,
+:where(.account-form,.profile-grid,.calendar-form) textarea{
+  display:block;width:100%;min-width:0;max-width:100%;
+}
+:where(.notification-card,.record-item,.connection-card,.settings-panel,
+  .calendar-panel,.account-card,.auth-card){overflow-wrap:anywhere}
+:where(.notification-card,.record-item) :where(time,.date,.timestamp,.meta){
+  white-space:normal;overflow-wrap:anywhere;
+}
+:where(.notification-card,.record-item) :where(button,.btn,a){
+  max-width:100%;white-space:normal;
+}
+@media(max-width:760px){
+  .account-nav{column-gap:12px}
+  .calendar-summary{
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));
+  }
+  .calendar-form{
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));
+  }
+  .event-row,.record-item,.connection-card,.preference-row,.security-row{
+    flex-direction:row;
+    flex-wrap:wrap;
+  }
+  .event-actions{flex-direction:row;flex-wrap:wrap}
+  .event-actions>*{flex:0 1 auto}
+  .connection-actions>*{flex:0 1 auto}
+}
+@media(max-width:520px){
+  .account-nav{justify-content:space-between;gap:8px}
+  .account-nav .account-brand{flex-basis:100%;margin-right:0}
+  .account-nav .account-home,.account-nav .theme-toggle{flex:0 1 auto}
+  .panel-heading,.calendar-toolbar,.dashboard-heading{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .panel-heading>button,.calendar-heading>button,.dashboard-heading>.site-link{
+    align-self:flex-start;
+  }
+  .calendar-summary,.calendar-form{
+    grid-template-columns:minmax(0,1fr);
+  }
+  .calendar-form .full{grid-column:auto}
+  .calendar-controls{width:100%;flex-wrap:wrap}
+  .calendar-controls .calendar-select{margin-left:0;flex:1 1 110px}
+  .event-row,.record-item,.connection-card,.preference-row,.security-row{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .event-actions,.connection-actions{width:100%}
+  .event-actions>* ,.connection-actions>*{flex:1 1 auto}
+  .connection-status{align-self:flex-start}
+  .calendar-weekdays span{font-size:clamp(7px,2vw,9px)}
+  .calendar-day{min-height:clamp(48px,13vw,66px)}
+}
+@media(max-width:380px){
+  .account-shell{width:calc(100% - 20px)!important}
+  .account-nav .account-brand{font-size:11px;letter-spacing:.12em}
+  .calendar-panel{padding:12px}
+  .calendar-controls>*{flex:1 1 auto}
+  .calendar-day{padding:2px}
+  .day-number{width:19px;height:19px;font-size:9px}
+}
