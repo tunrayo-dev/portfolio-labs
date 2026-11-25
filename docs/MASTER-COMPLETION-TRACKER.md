@@ -34,7 +34,7 @@ This is the source of truth for the rebuild. A feature is not marked **tested** 
 | FlowState | Tasks, focus timer, history, moods and calendar; cloud-sync module committed | Live cross-device testing, conflict/recovery review, reliable reminder lifecycle, settings and task/focus tests |
 | HabitTrack | Habit check-ins, history and browser notifications; cloud-sync module committed | Live sync tests, reminder lifecycle, permission/error states and deletion/recovery tests |
 | ReadWell Learn Suite | ReadWell study workspace and AI-helper prompt area | Confirm suite boundaries, cloud sync, revision workflows, saved history, AI provider integration if desired |
-| StudyKit | Flashcards, review flow, import/export and local storage | Cloud sync, robust CSV parsing, shared decks only with explicit sharing controls |
+| StudyKit | Flashcards, review flow, import/export and initial per-device cloud sync | Live sync/conflict/deletion tests, robust CSV parsing, shared decks only with explicit sharing controls |
 | PromptLab | Prompt builder, templates and saved local prompts | Cloud sync, version history, AI provider integration (not just prompt drafting) |
 | DataLens | CSV/JSON dataset exploration and analysis | Test larger files, Excel import, saved reports/analyses, cloud persistence |
 | BudgetBoard | Transactions, budgets, goals, debts, recurring rules and reports | Cloud sync, recurring-rule edge cases, import/export and calculation tests |
