@@ -26,6 +26,10 @@
 <label>Password<input type="password" name="password" autocomplete="new-password" required minlength="6"></label>
 <button class="account-submit" type="submit">Create my account</button>
 </form>
+<form class="account-form" id="passwordRecoveryForm" hidden>
+<label>New password<input type="password" name="password" autocomplete="new-password" required minlength="6"></label>
+<button class="account-submit" type="submit">Update password</button>
+</form>
 </div>
 <section class="account-session" id="signedInPanel" hidden>
 <p>You are signed in as:</p><strong id="signedInEmail"></strong>
@@ -65,6 +69,13 @@
     const {error}=await client.auth.signInWithPassword({email:String(f.get('email')).trim(),password:String(f.get('password'))});
     if(error){say(error.message,true);return;}say('Signed in successfully.');await refreshSession();
   });
+  $('passwordRecoveryForm').addEventListener('submit',async e=>{
+    e.preventDefault();const password=new FormData(e.currentTarget).get('password');
+    const {error}=await client.auth.updateUser({password:String(password)});
+    if(error){say(error.message,true);return;}
+    $('passwordRecoveryForm').hidden=true;say('Your password has been updated. You can now sign in with it.');
+    await client.auth.signOut();setTab(false);
+  });
   $('forgotPassword').addEventListener('click',async()=>{
     const email=$('signInForm').elements.email.value.trim();
     if(!email){say('Enter your email address first, then choose Forgot password.',true);return;}
@@ -79,7 +90,13 @@
     $('authForms').hidden=!!user;$('signedInPanel').hidden=!user;
     $('signedInEmail').textContent=user?.email||'';
   }
-  client.auth.onAuthStateChange(()=>refreshSession());
+  client.auth.onAuthStateChange((event)=>{
+    if(event==='PASSWORD_RECOVERY'){
+      $('authForms').hidden=false;$('signInForm').hidden=true;$('signUpForm').hidden=true;
+      $('passwordRecoveryForm').hidden=false;say('Choose a new password for your account.');
+    }
+    setTimeout(refreshSession,0);
+  });
   refreshSession();
 })();
 </script>
