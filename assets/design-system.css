@@ -686,3 +686,118 @@ table{max-width:100%;border-collapse:collapse}
   .calendar-day{padding:2px}
   .day-number{width:19px;height:19px;font-size:9px}
 }
+
+
+/* Portfolio Labs quality layer — shared behaviour across every product.
+   Content wraps at the available workspace width, including split-screen panes. */
+:where(body[class*="pl-product-"],body){
+  min-width:320px;
+  overflow-x:clip;
+}
+:where(.product-layout,.product-content,.product-content>main,.app,.workspace,.wrap,main){
+  min-width:0;
+  max-width:100%;
+}
+.product-layout{
+  grid-template-columns:minmax(210px,248px) minmax(0,1fr);
+}
+.product-sidebar{min-width:0;overscroll-behavior:contain}
+.product-content{overflow-x:clip}
+.product-content>main:not(.app){
+  width:100%;
+  max-width:var(--pl-content-max,1440px);
+}
+:where(.product-content,.workspace,.app,main) :where(h1,h2,h3,h4,p,small,label,strong,span,a,button){
+  overflow-wrap:anywhere;
+}
+:where(.product-content,.workspace,main) :where(.grid,.metrics,.kpis,.summary-grid,.stats-grid,.tool-grid,.formgrid,.formrow,.form-grid,.form-row,.workspace-fields,.lab,.sim,.split-layout,.two-col,.two-column){
+  min-width:0;
+}
+:where(.product-content,.workspace,main) :where(.grid,.metrics,.kpis,.summary-grid,.stats-grid,.tool-grid,.formgrid,.formrow,.form-grid,.form-row,.workspace-fields,.lab,.sim,.split-layout,.two-col,.two-column)>*{
+  min-width:0;
+  max-width:100%;
+}
+:where(.product-content,.workspace,main) :where(input,select,textarea){
+  min-width:0;
+  max-width:100%;
+}
+:where(.product-content,.workspace,main) input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+:where(.product-content,.workspace,main) select,
+:where(.product-content,.workspace,main) textarea{
+  width:100%;
+  min-height:42px;
+}
+:where(.product-content,.workspace,main) textarea{
+  min-height:110px;
+  resize:vertical;
+}
+:where(.product-content,.workspace,main) :where(.formrow,.form-grid,.formgrid,.workspace-fields){
+  align-items:end;
+}
+:where(.product-content,.workspace,main) :where(.actions,.tool-row,.form-actions,.connection-actions,.event-actions){
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+  max-width:100%;
+}
+:where(.product-content,.workspace,main) :where(.actions,.tool-row,.form-actions,.connection-actions,.event-actions)>*{
+  min-width:0;
+  max-width:100%;
+}
+:where(.product-content,.workspace,main) :where(button,.btn,.primary,.smallbtn){
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+:where(.product-content,.workspace,main) :where(.panel,.card,.kpi,.metrics article,.saved-card,.tool-item,.dialog){
+  min-width:0;
+  max-width:100%;
+}
+:where(.product-content,.workspace,main) :where(table,.table-wrap,.table-container){
+  max-width:100%;
+}
+:where(.product-content,.workspace,main) :where(.table-wrap,.table-container){
+  overflow-x:auto;
+  overscroll-behavior-inline:contain;
+}
+:where(.product-content,.workspace,main) table{
+  border-collapse:collapse;
+  width:100%;
+}
+:where(.product-content,.workspace,main) th,
+:where(.product-content,.workspace,main) td{
+  overflow-wrap:anywhere;
+}
+:where(.product-content,.workspace,main) :where([aria-live],[role="status"],.empty,.hint,.muted){
+  overflow-wrap:anywhere;
+}
+:where(.product-content,.workspace,main) :where(button,a,input,select,textarea,[tabindex]):focus-visible{
+  outline:3px solid color-mix(in srgb,var(--product-accent,#477a9b) 55%,white);
+  outline-offset:2px;
+}
+@media(max-width:1050px){
+  .product-layout{grid-template-columns:218px minmax(0,1fr)}
+}
+@media(max-width:800px){
+  .product-layout{display:block}
+  .product-content{width:100%;min-width:0}
+  .product-content>main:not(.app){padding-inline:clamp(14px,3.5vw,24px)}
+  :where(.product-content,.workspace,main) :where(.grid,.metrics,.kpis,.summary-grid,.stats-grid,.tool-grid,.formgrid,.formrow,.form-grid,.form-row,.workspace-fields,.lab,.sim,.split-layout,.two-col,.two-column){
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));
+  }
+}
+@media(max-width:520px){
+  .product-content>main:not(.app){padding-inline:14px}
+  :where(.product-content,.workspace,main) :where(.grid,.metrics,.kpis,.summary-grid,.stats-grid,.tool-grid,.formgrid,.formrow,.form-grid,.form-row,.workspace-fields,.lab,.sim,.split-layout,.two-col,.two-column){
+    grid-template-columns:minmax(0,1fr);
+  }
+  :where(.product-content,.workspace,main) :where(.actions,.tool-row,.form-actions,.connection-actions,.event-actions)>*{
+    flex:1 1 130px;
+  }
+  :where(.product-content,.workspace,main) :where(.panel,.card,.kpi,.metrics article){padding:15px}
+}
+@media(max-width:360px){
+  :where(.product-content,.workspace,main) :where(.panel,.card,.kpi,.metrics article){padding:12px}
+}
