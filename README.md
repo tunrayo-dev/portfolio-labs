@@ -1,21 +1,22 @@
 # Portfolio Labs — Motunrayo Linda Idowu
 
-A collection of browser-based productivity, learning, business and data tools, plus native source-code projects.
+Portfolio Labs is an independent digital product studio building focused browser-based tools for learning, productivity, small-business operations, personal finance, careers, data and route algorithms.
 
-## Web tools
+The public catalogue presents **seven product workspaces**. Some workspaces combine earlier standalone tools into one coherent suite; the ten names below describe the product modules, not ten separate top-level products.
 
-| Product | Purpose | Technologies |
+## Product workspaces
+
+| Workspace | Included modules | Purpose |
 |---|---|---|
-| FlowState | Task planning and focus sessions | HTML, CSS, JavaScript |
-| HabitTrack | Habit check-ins and weekly review | HTML, CSS, JavaScript |
-| ReadWell | Study planning, courses, flashcards and focus | HTML, CSS, JavaScript |
-| StudyKit | Flashcards and active-recall revision | React, Tailwind CSS |
-| PromptLab | Prompt drafting, templates and versioning | JavaScript |
-| DataLens | CSV/JSON exploration and analysis | JavaScript |
-| BudgetBoard | Income, expenses, budgets, goals and reports | JavaScript |
-| SellSmart NG | Business profile, products, invoices and sales reports | JavaScript |
-| CV Studio | CV builder, versions and print-to-PDF | JavaScript |
-| RoboRoute | Pathfinding visualiser and Lagos-focused route explorer | JavaScript |
+| FlowState Routine Suite | FlowState + HabitTrack | Tasks, focus sessions, habits and routines |
+| ReadWell Learn Suite | ReadWell + StudyKit + PromptLab | Study planning, active recall, flashcards and prompt drafting |
+| DataLens | DataLens | CSV/JSON exploration, cleaning and analysis |
+| BudgetBoard | BudgetBoard | Income, expenses, budgets, goals and reports |
+| SellSmart NG | SellSmart NG | Small-business customers, products, sales, stock and invoices |
+| CV Studio | CV Studio | CV drafting, versions and document export |
+| RoboRoute | RoboRoute | Pathfinding visualisation and route exploration |
+
+The product catalogue at [the Portfolio Labs homepage](index.html) is the canonical list of public workspaces.
 
 ## Native code projects
 
@@ -27,17 +28,19 @@ A collection of browser-based productivity, learning, business and data tools, p
 
 These source examples run in their respective compiler or runtime; they are not browser apps.
 
-## Account and data status
+## Account, privacy and data status
 
-Portfolio Labs has a Supabase email/password authentication foundation. The browser apps currently retain their main working datasets in local storage unless a product explicitly indicates otherwise. **Signing in does not yet mean all product data is synced to the cloud or available on another device.**
+Portfolio Labs has a Supabase email/password authentication foundation. **Authentication is not the same as cloud synchronisation.** The main working datasets in several browser products are still stored in the current browser's local storage. Signing in does not yet guarantee that data follows a user to another device.
 
-The shared cloud-workspace adapter and its database migration are being prepared. Cloud sync must not be considered active until the migration is applied in the Portfolio Labs Supabase project and each product has been integrated and tested. Never place a Supabase service-role key or private provider secret in this repository.
+The shared cloud-workspace adapter exists, but the database migration, product-by-product integration, conflict handling and account-isolation tests must be completed before cross-device sync can be advertised as available. Do not put Supabase service-role keys, AI provider secrets or private API keys in browser code.
 
-A first shared Calendar and Reminders workspace is available at `calendar.html`. It requires the calendar migration and optional Cron setup described in [the Calendar setup guide](docs/CALENDAR-SETUP.md).\n\nSee [the master completion tracker](docs/MASTER-COMPLETION-TRACKER.md) for implementation and testing status.
+A shared Calendar and Reminders workspace is available at `calendar.html`. Its database migration and optional Cron scheduler are documented in [the Calendar setup guide](docs/CALENDAR-SETUP.md). In-app reminder generation is not the same as reliable email or browser push delivery; those providers are not yet configured.
+
+See the [master completion tracker](docs/MASTER-COMPLETION-TRACKER.md) for implementation and test status, and the [commercial readiness roadmap](docs/COMMERCIAL-READINESS-ROADMAP.md) for the work required before paid public launch.
 
 ## Run and publish
 
-Open `index.html` in a modern browser or publish with GitHub Pages. Most of the site has no build step. StudyKit loads React, ReactDOM, Babel and Tailwind from public CDNs, so its first load requires internet access. Some mapping and geocoding features also require an internet connection.
+Open `index.html` in a modern browser or publish with GitHub Pages. Most of the site has no build step. Some experiences depend on third-party CDNs or external services and therefore require an internet connection.
 
 ## Install
 
