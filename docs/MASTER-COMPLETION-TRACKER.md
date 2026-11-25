@@ -60,9 +60,9 @@ This is the source of truth for the rebuild. A feature is not marked **tested** 
 | Workstream | Current status | Remaining work |
 |---|---|---|
 | Calendar interface | Implemented | Deploy and test signed-in flows |
-| Calendar events database | Needs setup | Apply calendar migration and verify RLS |
-| Standalone reminders | Implemented in UI/schema | Apply migration and test one-time/recurring reminders |
-| In-app notification inbox | Implemented in UI/schema | Enable Cron job and verify delivery |
+| Calendar events database | Migration applied | Calendar migration was run in the Portfolio Labs Supabase project; independently verify RLS and event CRUD |
+| Standalone reminders | Migration applied | Test one-time and recurring reminder creation, completion and time-zone behavior |
+| In-app notification inbox | Scheduler enabled | Cron job `portfolio-labs-process-reminders` is active; verify actual due-reminder delivery in the deployed UI |
 | iCalendar import/export | Basic implementation | Test provider compatibility and time-zone edge cases |
 | Browser push and email delivery | Not started | Configure server-side push/email provider and permissions |
 | Outlook / Apple / Zoho sync | Not started | Register providers and implement secure OAuth/CalDAV workflows |
@@ -87,7 +87,7 @@ This is the source of truth for the rebuild. A feature is not marked **tested** 
 - [ ] Update README with accurate storage and feature status after each release.
 - [ ] Mark a feature **Tested** only after the test is actually completed.
 
-## Non-negotiable implementation rules
+## Commercial readiness\n\n- [ ] Validate the first paying customer segment and willingness to pay.\n- [ ] Define free/paid packaging and verify infrastructure costs before publishing prices.\n- [ ] Select and integrate a payment provider with server-verified webhooks and subscription state.\n- [ ] Publish privacy, terms, refund/cancellation and support policies before taking payments.\n- [ ] Establish product analytics, retention measurement, support process and incident communication.\n- [ ] Prepare verified traction evidence and a product/architecture deck for investors or partners.\n- See [the commercial readiness roadmap](COMMERCIAL-READINESS-ROADMAP.md).\n\n## Non-negotiable implementation rules
 
 1. Never put Supabase service-role keys, AI provider secrets, or private API keys in browser code.
 2. Keep each user's records isolated with RLS; client-side filtering is not security.
