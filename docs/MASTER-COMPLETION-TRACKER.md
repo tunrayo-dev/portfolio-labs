@@ -55,9 +55,22 @@ This is the source of truth for the rebuild. A feature is not marked **tested** 
 - [ ] Standardise loading, empty, success and error states.
 - [ ] Verify side navigation, mobile navigation, keyboard access and footer links.
 
+## Calendar and notifications
+
+| Workstream | Current status | Remaining work |
+|---|---|---|
+| Calendar interface | Implemented | Deploy and test signed-in flows |
+| Calendar events database | Needs setup | Apply calendar migration and verify RLS |
+| Standalone reminders | Implemented in UI/schema | Apply migration and test one-time/recurring reminders |
+| In-app notification inbox | Implemented in UI/schema | Enable Cron job and verify delivery |
+| iCalendar import/export | Basic implementation | Test provider compatibility and time-zone edge cases |
+| Browser push and email delivery | Not started | Configure server-side push/email provider and permissions |
+| Outlook / Apple / Zoho sync | Not started | Register providers and implement secure OAuth/CalDAV workflows |
+| Product-originated reminders | Not started | Integrate all ten products with shared event/reminder tables |
+
 ## Notifications and community
 
-- [ ] Shared notification preferences and permission explanation.
+- [x] Shared in-app notification inbox UI and per-user notification table migration drafted.\n- [ ] Apply calendar migration and enable the reminder scheduler.\n- [ ] Shared notification preferences and permission explanation.
 - [ ] Reliable reminders that work within browser/PWA limits; explain that browsers may suspend background work.
 - [ ] Sharing with explicit owner-controlled access and revocation.
 - [ ] Community/friend challenges only after privacy, moderation and reporting controls exist.

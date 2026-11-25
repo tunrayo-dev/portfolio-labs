@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080a10"><meta name="description" content="Your shared Portfolio Labs calendar, reminders and notifications.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/account.css"><link rel="stylesheet" href="assets/design-system.css"><link rel="stylesheet" href="assets/calendar.css">
+<script src="assets/theme-sync.js" defer></script>
+<title>Calendar & Reminders — Portfolio Labs</title></head>
+<body class="pl-account" data-theme="dark">
+<div class="account-shell">
+<nav class="account-nav"><a class="account-brand" href="index.html">PORTFOLIO <span>LABS</span></a><a class="account-home" href="account.html">← Account</a><a class="account-home" href="index.html">Home</a><button class="theme-toggle" id="themeToggle" type="button"><span id="themeIcon">☼</span><span id="themeLabel">Light mode</span></button></nav>
+<main class="calendar-layout">
+<aside class="calendar-rail"><span class="account-kicker">WORKSPACE</span><a class="calendar-rail-link active" href="#calendarPanel" data-view="calendar">▦ Calendar</a><a class="calendar-rail-link" href="#remindersPanel" data-view="reminders">◷ Reminders</a><a class="calendar-rail-link" href="#notificationsPanel" data-view="notifications">◉ Notifications <span id="unreadCount" class="count-pill">0</span></a><a class="calendar-rail-link" href="#connectionsPanel" data-view="connections">↗ Connected calendars</a><div class="calendar-rail-bottom"><a href="account.html">Account settings</a><p>All times use Africa/Lagos unless changed in your event.</p></div></aside>
+<section class="calendar-main">
+<header class="calendar-heading"><div><span class="account-kicker">PORTFOLIO LABS / YOUR WORKSPACE</span><h1>Calendar & reminders</h1><p>One place for your schedule across Portfolio Labs.</p></div><button class="pl-button primary" id="newEventTop" type="button">＋ New event</button></header>
+<div id="authNotice" class="calendar-notice" hidden><strong>Sign in to use your calendar.</strong><p>Your events and reminders are private to your account and sync through Portfolio Labs.</p><a class="pl-button primary" href="account.html">Go to sign in</a></div>
+<div id="app" hidden>
+<section class="calendar-summary">
+<div class="summary-card"><span>UPCOMING EVENTS</span><strong id="eventCount">0</strong><small>In the next 30 days</small></div>
+<div class="summary-card"><span>ACTIVE REMINDERS</span><strong id="reminderCount">0</strong><small>Waiting for you</small></div>
+<div class="summary-card"><span>UNREAD NOTIFICATIONS</span><strong id="notificationCount">0</strong><small>In your inbox</small></div>
+</section>
+<section class="calendar-panel" id="calendarPanel">
+<div class="calendar-toolbar"><div><span class="panel-index">01 / YOUR SCHEDULE</span><h2 id="monthLabel">Calendar</h2></div><div class="calendar-controls"><button class="quiet-button" id="todayBtn" type="button">Today</button><button class="icon-button" id="prevMonth" type="button" aria-label="Previous month">‹</button><button class="icon-button" id="nextMonth" type="button" aria-label="Next month">›</button><select id="calendarView" class="calendar-select" aria-label="Calendar view"><option value="month">Month</option><option value="agenda">Agenda</option></select></div></div>
+<div class="calendar-weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+<div id="calendarGrid" class="calendar-grid" aria-label="Monthly calendar"></div>
+<div class="calendar-legend"><span><i class="dot blue"></i> Personal</span><span><i class="dot purple"></i> Study</span><span><i class="dot green"></i> Work</span><span><i class="dot pink"></i> Health & habits</span></div>
+<div class="selected-day"><div><span class="panel-index">SELECTED DAY</span><h3 id="selectedDateLabel">Today's schedule</h3></div><div id="dayEvents" class="day-events"></div></div>
+</section>
+<section class="calendar-panel" id="eventFormPanel">
+<div class="panel-heading"><div><span class="panel-index">02 / CREATE</span><h2>Add an event</h2><p>Events are saved to your Portfolio Labs account.</p></div></div>
+<form id="eventForm" class="calendar-form">
+<label>Event title<input name="title" maxlength="120" required placeholder="e.g. Study session"></label>
+<label>Category<select name="category"><option value="personal">Personal</option><option value="study">Study</option><option value="work">Work</option><option value="health">Health & habits</option><option value="deadline">Deadline</option><option value="other">Other</option></select></label>
+<label>Date<input name="date" id="eventDate" type="date" required></label>
+<label>Start time<input name="start" type="time" value="09:00" required></label>
+<label>End time<input name="end" type="time" value="10:00" required></label>
+<label>Reminder<select name="reminder"><option value="0">No reminder</option><option value="5">5 minutes before</option><option value="15" selected>15 minutes before</option><option value="30">30 minutes before</option><option value="60">1 hour before</option><option value="1440">1 day before</option></select></label>
+<label class="full">Notes<textarea name="description" rows="3" maxlength="1500" placeholder="Add details, links or a location"></textarea></label>
+<div class="form-actions full"><button class="pl-button primary" type="submit">Save event</button><span id="eventStatus" role="status" class="inline-message"></span></div>
+</form>
+</section>
+<section class="calendar-panel" id="remindersPanel">
+<div class="panel-heading"><div><span class="panel-index">03 / REMINDERS</span><h2>Your reminders</h2><p>Create reminders for tasks, study, bills and other important dates.</p></div></div>
+<form id="reminderForm" class="calendar-form compact-form">
+<label>Reminder<input name="title" maxlength="120" required placeholder="What should we remind you about?"></label>
+<label>Due date<input name="date" type="date" required></label>
+<label>Time<input name="time" type="time" value="09:00" required></label>
+<label>Repeat<select name="repeat"><option value="none">Does not repeat</option><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option></select></label>
+<label class="full">Details<input name="body" maxlength="500" placeholder="Optional details"></label>
+<div class="form-actions full"><button class="pl-button primary" type="submit">Create reminder</button><span id="reminderStatus" role="status" class="inline-message"></span></div>
+</form>
+<div id="reminderList" class="record-list"></div>
+</section>
+<section class="calendar-panel" id="notificationsPanel">
+<div class="panel-heading"><div><span class="panel-index">04 / INBOX</span><h2>Notifications</h2><p>Activity and reminders generated by your Portfolio Labs workspace.</p></div><button id="markAllRead" class="quiet-button" type="button">Mark all read</button></div>
+<div id="notificationList" class="record-list"></div>
+</section>
+<section class="calendar-panel" id="connectionsPanel">
+<div class="panel-heading"><div><span class="panel-index">05 / CONNECTIONS</span><h2>Connected calendars</h2><p>Portfolio Labs works without an external calendar account.</p></div></div>
+<div class="connection-card"><div><strong>Portfolio Labs Calendar</strong><p>Your primary calendar. Events are stored in your private Portfolio Labs workspace.</p></div><span class="connection-status">Active</span></div>
+<div class="connection-card"><div><strong>iCalendar (.ics)</strong><p>Import and export calendar events between compatible calendar apps.</p></div><div class="connection-actions"><button class="quiet-button" id="exportIcs" type="button">Export .ics</button><label class="quiet-button file-button" for="importIcs">Import .ics</label><input id="importIcs" type="file" accept=".ics,text/calendar" hidden></div></div>
+<div class="connection-card"><div><strong>Microsoft Outlook</strong><p>Optional two-way connection. Requires a Microsoft developer app registration and user consent.</p></div><span class="connection-status planned">Setup required</span></div>
+<div class="connection-card"><div><strong>Apple Calendar / iCloud</strong><p>Optional calendar exchange through supported iCalendar or CalDAV workflows.</p></div><span class="connection-status planned">Planned</span></div>
+<div class="connection-card"><div><strong>Zoho Calendar</strong><p>Optional provider integration for users who already use Zoho.</p></div><span class="connection-status planned">Planned</span></div>
+<p class="integration-note">External provider connections are not active yet. Never enter an external account password into Portfolio Labs.</p>
+</section>
+<p id="globalStatus" class="calendar-status" role="status" aria-live="polite"></p>
+</div></section></main></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="assets/supabase-client.js"></script><script src="assets/calendar.js"></script><script src="assets/pwa.js"></script>
+</body></html>

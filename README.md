@@ -33,7 +33,7 @@ Portfolio Labs has a Supabase email/password authentication foundation. The brow
 
 The shared cloud-workspace adapter and its database migration are being prepared. Cloud sync must not be considered active until the migration is applied in the Portfolio Labs Supabase project and each product has been integrated and tested. Never place a Supabase service-role key or private provider secret in this repository.
 
-See [the master completion tracker](docs/MASTER-COMPLETION-TRACKER.md) for implementation and testing status.
+A first shared Calendar and Reminders workspace is available at `calendar.html`. It requires the calendar migration and optional Cron setup described in [the Calendar setup guide](docs/CALENDAR-SETUP.md).\n\nSee [the master completion tracker](docs/MASTER-COMPLETION-TRACKER.md) for implementation and testing status.
 
 ## Run and publish
 

@@ -1,8 +1,8 @@
-const CACHE='portfolio-labs-v35';
+const CACHE='portfolio-labs-v36';
 const CORE=[
   './','./index.html','./assets/site.css','./assets/tech-theme.css','./assets/redesign.css',
   './assets/cinematic.css','./assets/launch-theme.css','./assets/master-home.css',
-  './assets/design-system.css','./assets/theme-sync.js','./assets/product-footer.js',
+  './assets/design-system.css','./assets/theme-sync.js','./assets/calendar.css','./assets/calendar.js','./calendar.html','./assets/product-footer.js',
   './assets/product-suite.js','./assets/product-sidebar.js','./assets/product-sidebar.css',
   './assets/flowstate-redesign.css','./assets/project.css','./assets/pwa.js',
   './assets/navigation.js','./assets/site-shell.js','./assets/icon.svg','./manifest.webmanifest',
