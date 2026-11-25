@@ -3,7 +3,7 @@ const CORE=[
  './','./index.html','./assets/site.css','./assets/tech-theme.css','./assets/redesign.css',
  './assets/cinematic.css','./assets/launch-theme.css','./assets/master-home.css',
  './assets/design-system.css','./assets/product-visuals.css','./assets/theme-sync.js',
- './assets/calendar.css','./assets/calendar.js','./calendar.html','./assets/product-footer.js',
+ './assets/calendar.css','./calendar.html','./assets/product-footer.js',
  './assets/product-suite.js','./assets/product-sidebar.js','./assets/product-sidebar.css',
  './assets/flowstate-redesign.css','./assets/project.css','./assets/pwa.js',
  './assets/navigation.js','./assets/site-shell.js','./assets/icon.svg','./manifest.webmanifest',
@@ -20,7 +20,7 @@ const CORE=[
  './projects/readwell/index.html','./projects/readwell/app.js',
  './code-projects/index.html','./privacy.html','./install.html',
  './account.html','./assets/account.css','./assets/account-link.js',
- './assets/calendar.css','./assets/calendar.js'
+ ''
 ];
 self.addEventListener('install',event=>event.waitUntil(
  caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting())
@@ -34,7 +34,7 @@ self.addEventListener('fetch',event=>{
  if(request.method!=='GET'||new URL(request.url).origin!==self.location.origin)return;
  const url=new URL(request.url);
  const page=request.mode==='navigate'||request.destination==='document';
- const refreshable=page||['style','script'].includes(request.destination)||/\\.(?:html|css|js)$/.test(url.pathname);
+ const refreshable=page||['style','script'].includes(request.destination)||/\.(?:html|css|js)$/.test(url.pathname);
  if(refreshable){
   event.respondWith((async()=>{
    try{
