@@ -51,6 +51,7 @@
 <a class="rail-link active" href="#profileSection"> <span>◉</span> Overview</a>
 <a class="rail-link" href="#preferencesSection"><span>⚙</span> Preferences</a>
 <a class="rail-link" href="#securitySection"><span>⌑</span> Security</a>
+<a class="rail-link" href="#privacySection"><span>◇</span> Data & privacy</a>
 <div class="rail-bottom"><a href="index.html">← Back to Portfolio Labs</a></div>
 </aside>
 <div class="dashboard-main">
@@ -74,7 +75,10 @@
 <section class="settings-panel" id="securitySection">
 <div class="panel-heading"><div><span class="panel-index">03 / SECURITY</span><h2>Account security</h2><p>Manage access to your Portfolio Labs account.</p></div></div>
 <div class="security-row"><div><strong>Signed in account</strong><p id="sessionEmail"></p></div><button class="quiet-button" type="button" id="signOut">Sign out</button></div>
+<form id="passwordChangeForm" class="profile-grid" style="margin-top:18px"><label>New password<input id="newPassword" type="password" minlength="8" autocomplete="new-password" required placeholder="At least 8 characters"></label><label>Confirm new password<input id="confirmPassword" type="password" minlength="8" autocomplete="new-password" required placeholder="Enter it again"></label><div class="form-actions"><button class="account-submit compact" type="submit">Update password</button><span class="inline-message" id="passwordMessage" role="status"></span></div></form>
+<div class="security-row"><div><strong>Other signed-in devices</strong><p>End sessions on other devices that use this account.</p></div><button class="quiet-button" type="button" id="signOutEverywhere">Sign out everywhere</button></div>
 </section>
+<section class="settings-panel" id="privacySection"><div class="panel-heading"><div><span class="panel-index">05 / DATA & PRIVACY</span><h2>Your account data</h2><p>Download a copy of the profile information stored for your account.</p></div></div><div class="security-row"><div><strong>Export account profile</strong><p>This exports your profile details and account metadata. Product data remains in each product’s own backup/export tools.</p></div><button class="quiet-button" type="button" id="exportAccount">Download profile</button></div></section>
 <p class="dashboard-message" id="dashboardMessage" role="status" aria-live="polite"></p>
 </div>
 </section>
@@ -152,6 +156,27 @@
     $('profileMessage').textContent='Changes saved.';
   });
   $('signOut').addEventListener('click',async()=>{const {error}=await client.auth.signOut();if(error){$('dashboardMessage').textContent=error.message;return;}location.href=homeUrl;});
+  $('passwordChangeForm').addEventListener('submit',async e=>{
+    e.preventDefault();const password=$('newPassword').value,confirmPassword=$('confirmPassword').value;
+    $('passwordMessage').textContent='';
+    if(password.length<8){$('passwordMessage').textContent='Use at least 8 characters.';return;}
+    if(password!==confirmPassword){$('passwordMessage').textContent='The passwords do not match.';return;}
+    const {error}=await client.auth.updateUser({password});
+    if(error){$('passwordMessage').textContent=error.message;return;}
+    e.currentTarget.reset();$('passwordMessage').textContent='Password updated successfully.';
+  });
+  $('signOutEverywhere').addEventListener('click',async()=>{
+    if(!confirm('Sign out of this account on all devices?'))return;
+    const {error}=await client.auth.signOut({scope:'global'});
+    if(error){$('dashboardMessage').textContent=error.message;return;}
+    location.href=homeUrl;
+  });
+  $('exportAccount').addEventListener('click',()=>{
+    if(!currentUser)return;
+    const payload={exported_at:new Date().toISOString(),account:{id:currentUser.id,email:currentUser.email,created_at:currentUser.created_at,last_sign_in_at:currentUser.last_sign_in_at},profile:{full_name:currentUser.user_metadata?.full_name||'',avatar_url:currentUser.user_metadata?.avatar_url||''}};
+    const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='portfolio-labs-account-profile.json';a.click();URL.revokeObjectURL(url);
+  });
   let currentUser=null;
   async function refreshSession(){
     const {data,error}=await client.auth.getSession();if(error){say(error.message,true);return;}
