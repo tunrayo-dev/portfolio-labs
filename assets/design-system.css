@@ -260,3 +260,113 @@ body.pl-account>.account-shell>.account-footer{margin-top:auto}
   .day-event{max-width:100%}
   .account-footer{align-items:flex-start;flex-direction:column}
 }
+
+
+/* Portfolio Labs accessibility: dependable text/background contrast */
+:root{
+  --pl-contrast-text:#172435;
+  --pl-contrast-muted:#526174;
+  --pl-contrast-surface:#ffffff;
+  --pl-contrast-surface-raised:#f1f5f9;
+  --pl-contrast-border:#cbd5e1;
+  --pl-contrast-on-accent:#ffffff;
+}
+html:not([data-pl-theme="light"]){
+  color-scheme:dark;
+  --pl-contrast-text:#f1f5f9;
+  --pl-contrast-muted:#c0cad7;
+  --pl-contrast-surface:#182330;
+  --pl-contrast-surface-raised:#202e3d;
+  --pl-contrast-border:#526174;
+  --pl-contrast-on-accent:#ffffff;
+}
+body{color:var(--pl-contrast-text)}
+.panel,.card,.kpi,.workspace-bar,.saved-card,.tool-item,.project-card,
+.pl-overview-panel,.calendar-panel,.summary-card,.notification-card,
+.connection-card,.calendar-notice,.settings-panel,.auth-card{
+  color:var(--pl-contrast-text);
+}
+.panel p,.card p,.kpi p,.workspace-bar p,.saved-card p,.tool-item p,
+.project-card p,.calendar-panel p,.summary-card p,.notification-card p,
+.connection-card p,.calendar-notice p,.settings-panel p,.auth-card p,
+.muted,.hint,.subtle,.description,.helper-text,.form-hint{
+  color:var(--pl-contrast-muted);
+}
+label,legend,.field-label,.label{color:var(--pl-contrast-text)}
+input,select,textarea{
+  color:var(--pl-contrast-text);
+  caret-color:var(--pl-contrast-text);
+}
+input::placeholder,textarea::placeholder{color:var(--pl-contrast-muted);opacity:1}
+button,.btn,.primary,.smallbtn,[role=button]{
+  text-decoration:none;
+}
+.btn:not(.alt),.primary,.account-submit,.calendar-primary,
+button[type=submit]{
+  color:#fff;
+}
+.btn.alt,.quiet-button,.secondary-button{
+  color:var(--pl-contrast-text);
+  background:var(--pl-contrast-surface-raised);
+  border:1px solid var(--pl-contrast-border);
+}
+.badge,.pill,.tag,.status-badge{
+  color:var(--pl-contrast-text);
+  border-color:var(--pl-contrast-border);
+}
+hr,.divider{border-color:var(--pl-contrast-border)}
+a{ text-underline-offset:3px }
+a:focus-visible,button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid #60a5fa;
+  outline-offset:3px;
+}
+html[data-pl-theme="light"]{
+  color-scheme:light;
+  --pl-contrast-text:#172435;
+  --pl-contrast-muted:#526174;
+  --pl-contrast-surface:#ffffff;
+  --pl-contrast-surface-raised:#f1f5f9;
+  --pl-contrast-border:#cbd5e1;
+}
+html[data-pl-theme="light"] body{color:#172435}
+html[data-pl-theme="light"] .panel,
+html[data-pl-theme="light"] .card,
+html[data-pl-theme="light"] .kpi,
+html[data-pl-theme="light"] .workspace-bar,
+html[data-pl-theme="light"] .saved-card,
+html[data-pl-theme="light"] .tool-item,
+html[data-pl-theme="light"] .project-card,
+html[data-pl-theme="light"] .pl-overview-panel,
+html[data-pl-theme="light"] .calendar-panel,
+html[data-pl-theme="light"] .summary-card,
+html[data-pl-theme="light"] .notification-card,
+html[data-pl-theme="light"] .connection-card,
+html[data-pl-theme="light"] .calendar-notice,
+html[data-pl-theme="light"] .settings-panel,
+html[data-pl-theme="light"] .auth-card{color:#172435}
+html[data-pl-theme="light"] .muted,
+html[data-pl-theme="light"] .hint,
+html[data-pl-theme="light"] .subtle,
+html[data-pl-theme="light"] .description,
+html[data-pl-theme="light"] .helper-text,
+html[data-pl-theme="light"] .form-hint{color:#526174}
+html[data-pl-theme="light"] input,
+html[data-pl-theme="light"] select,
+html[data-pl-theme="light"] textarea{
+  color:#172435;background:#fff;border-color:#b9c6d5;
+}
+html[data-pl-theme="light"] input::placeholder,
+html[data-pl-theme="light"] textarea::placeholder{color:#526174;opacity:1}
+html[data-pl-theme="light"] .btn.alt,
+html[data-pl-theme="light"] .quiet-button,
+html[data-pl-theme="light"] .secondary-button{
+  color:#172435;background:#f1f5f9;border-color:#b9c6d5;
+}
+html[data-pl-theme="light"] .badge,
+html[data-pl-theme="light"] .pill,
+html[data-pl-theme="light"] .tag,
+html[data-pl-theme="light"] .status-badge{color:#263648;border-color:#b9c6d5}
+@media(forced-colors:active){
+  button,a,input,select,textarea{forced-color-adjust:auto}
+}
