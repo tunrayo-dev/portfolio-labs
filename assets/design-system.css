@@ -54,3 +54,22 @@ html[data-pl-theme="light"] .product-content .workspace-sheet{background:#fff;co
 html[data-pl-theme="light"] .product-content .workspace-sheet input,html[data-pl-theme="light"] .product-content .workspace-sheet select{background:#fff;color:#172435}
 @media(max-width:800px){.product-content>main:not(.app){padding:18px 16px 38px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+/* Additional light-theme refinements for the Portfolio Labs landing page. */
+html[data-pl-theme="light"] .master-stats,html[data-pl-theme="light"] .master-stats b{color:#536579!important}
+html[data-pl-theme="light"] .hero-foot,html[data-pl-theme="light"] .float-label{color:#68788c!important}
+html[data-pl-theme="light"] .core-card{background:linear-gradient(145deg,#fff,#e7eef7 70%);border-color:#c7d4e3;box-shadow:0 25px 65px #263b551c,inset 0 1px #fff;transform:rotate(-8deg)}
+html[data-pl-theme="light"] .core-card>span{color:#172435}
+html[data-pl-theme="light"] .core-card small{color:#64748b}
+html[data-pl-theme="light"] .orbit{border-color:#7891aa38}
+html[data-pl-theme="light"] .master-product{background:linear-gradient(135deg,#fff,#f0f4f9)!important;border-color:#dce4ed!important;color:#172435!important;box-shadow:0 8px 26px #263b5509}
+html[data-pl-theme="light"] .master-product:hover{background:linear-gradient(135deg,#fff,#eaf1f8)!important}
+html[data-pl-theme="light"] .product-number,html[data-pl-theme="light"] .product-features{color:#64748b!important}
+html[data-pl-theme="light"] .product-open{color:#26384d!important}
+html[data-pl-theme="light"] .receipt-art,html[data-pl-theme="light"] .budget-art,html[data-pl-theme="light"] .timer-art,html[data-pl-theme="light"] .cv-art{background:#fff!important;box-shadow:0 12px 35px #263b5515}
+html[data-pl-theme="light"] .receipt-art strong,html[data-pl-theme="light"] .budget-art b,html[data-pl-theme="light"] .timer-art b{color:#172435!important}
+html[data-pl-theme="light"] .receipt-art i,html[data-pl-theme="light"] .cv-art i,html[data-pl-theme="light"] .budget-art>i{background-color:#dce5ee}
+html[data-pl-theme="light"] .receipt-art b,html[data-pl-theme="light"] .cv-art b,html[data-pl-theme="light"] .budget-art small,html[data-pl-theme="light"] .timer-art small,html[data-pl-theme="light"] .cv-art span{color:#536579}
+html[data-pl-theme="light"] .source-band>a{color:#172435;border-color:#aebdce}
+html[data-pl-theme="light"] .master-end{background:radial-gradient(ellipse at 50% 100%,#dce7f755,transparent 55%),#eef3f8!important}
+html[data-pl-theme="light"] .master-end p{color:#536579!important}
+html[data-pl-theme="light"] .product-art{background:radial-gradient(ellipse at 50% 50%,color-mix(in srgb,var(--product-accent) 15%,transparent),transparent 66%)}
