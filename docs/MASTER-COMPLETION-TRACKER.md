@@ -11,6 +11,8 @@ This is the source of truth for the rebuild. A feature is not marked **tested** 
 
 ## Platform foundation
 
+- Read-only Supabase audit script committed at `supabase/audit/portfolio-labs-audit.sql`; **not yet run against the live project**.
+
 | Workstream | Current status | Remaining work |
 |---|---|---|
 | Static hosting | Implemented | Keep GitHub Pages deployment green |
@@ -24,7 +26,7 @@ This is the source of truth for the rebuild. A feature is not marked **tested** 
 | Cloud file storage | Not started | Define private buckets, size/type limits, signed URLs, and RLS |
 | Account data export | Partial | Include product records and supported files |
 | Account deletion | Not started | Add a secure deletion flow and document retention effects |
-| Security review | Needs verification | Audit all tables, storage policies, input validation, and public configuration |
+| Security review | Audit prepared; live results pending | Run `supabase/audit/portfolio-labs-audit.sql`, review tables/policies/functions/grants, then separately audit Storage and Auth settings |
 | Password recovery | Implemented | Test email delivery and callback URL in production |
 
 ## Product work
