@@ -370,3 +370,182 @@ html[data-pl-theme="light"] .status-badge{color:#263648;border-color:#b9c6d5}
 @media(forced-colors:active){
   button,a,input,select,textarea{forced-color-adjust:auto}
 }
+
+
+
+/* =========================================================
+   Portfolio Labs responsive system
+   Layouts respond to available viewport width, including
+   laptop split-screen windows, tablets and small phones.
+   ========================================================= */
+:root{
+  --pl-page-gutter:clamp(14px,3.2vw,52px);
+  --pl-section-gap:clamp(14px,2vw,24px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{width:100%;max-width:100%;overflow-x:clip;scroll-padding-top:20px}
+body{width:100%;max-width:100%;min-width:0;overflow-x:clip}
+main,header,footer,section,article,aside,nav,form,fieldset,
+.product-content,.wrap,.workspace,.calendar-main,.dashboard-main,
+.auth-layout,.calendar-layout,.dashboard,.account-shell{
+  min-width:0;max-width:100%;
+}
+img,svg,video,canvas,iframe{max-width:100%}
+img,video,canvas{height:auto}
+pre,code{max-width:100%;overflow-x:auto}
+button,a,input,select,textarea{overflow-wrap:anywhere}
+input,select,textarea,button{max-width:100%}
+table{max-width:100%;border-collapse:collapse}
+.table-wrap,.table-container,.table-scroll,.data-table-wrap{
+  width:100%;max-width:100%;min-width:0;overflow-x:auto;
+  overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;
+}
+:where(.grid,.kpis,.metrics,.summary-grid,.card-grid,.stats-grid,.tool-grid,.project-grid){
+  min-width:0;
+}
+:where(.grid,.kpis,.metrics,.summary-grid,.card-grid,.stats-grid,.tool-grid,.project-grid)>*{
+  min-width:0;max-width:100%;
+}
+:where(.panel,.card,.kpi,.metric,.summary-card,.project-card,.tool-card,
+.settings-panel,.connection-card,.notification-card,.auth-card){
+  min-width:0;overflow-wrap:anywhere;
+}
+:where(.formrow,.form-grid,.form-row,.profile-grid)>*{min-width:0}
+:where(.formrow,.form-grid,.form-row) input,
+:where(.formrow,.form-grid,.form-row) select,
+:where(.formrow,.form-grid,.form-row) textarea{width:100%;min-width:0}
+:where(.hero,.pagehead,.calendar-heading,.dashboard-heading){
+  min-width:0;flex-wrap:wrap;
+}
+:where(.hero,.pagehead,.calendar-heading,.dashboard-heading)>*{min-width:0}
+:where(.hero h1,.pagehead h1,.calendar-heading h1,.dashboard-heading h1){
+  overflow-wrap:anywhere;text-wrap:balance;
+}
+:where(.top,.appbar,.account-nav){
+  min-width:0;max-width:100%;flex-wrap:wrap;
+}
+:where(.nav-links,.nav-actions){min-width:0;max-width:100%}
+:where(.nav-links) a{overflow-wrap:anywhere}
+:where(.chart,.chart-container,.visualization,.map-container){
+  min-width:0;max-width:100%;overflow:hidden;
+}
+:where(.chart) canvas,:where(.chart) svg{max-width:100%}
+:where(.footer-main,.footer-grid){min-width:0;max-width:100%}
+:where(.footer-main,.footer-grid)>*{min-width:0;overflow-wrap:anywhere}
+
+/* Laptop and split-screen: progressively reclaim horizontal space. */
+@media(max-width:1180px){
+  .product-content>main:not(.app){
+    padding-inline:clamp(18px,3vw,34px);
+  }
+  :where(.grid.two,.two-col,.two-column,.split-layout){
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  :where(.calendar-layout,.dashboard){
+    grid-template-columns:minmax(175px,220px) minmax(0,1fr);
+  }
+  :where(.metrics,.kpis,.calendar-summary){
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));
+  }
+}
+
+/* Narrow laptop window / tablet landscape. */
+@media(max-width:920px){
+  .product-content>main:not(.app){padding:22px var(--pl-page-gutter) 42px}
+  :where(.calendar-layout,.dashboard,.app){
+    grid-template-columns:minmax(0,1fr);
+  }
+  :where(.calendar-rail,.dashboard-rail,.app>.sidebar){
+    position:static;inset:auto;width:100%;max-width:100%;
+    min-width:0;height:auto;max-height:none;
+    border-right:0;border-bottom:1px solid var(--pl-line,rgba(130,150,175,.25));
+  }
+  :where(.calendar-rail,.dashboard-rail,.app>.sidebar) nav{
+    display:flex;flex-direction:row;flex-wrap:nowrap;gap:8px;
+    max-width:100%;overflow-x:auto;padding-bottom:6px;
+    -webkit-overflow-scrolling:touch;
+  }
+  :where(.calendar-rail,.dashboard-rail,.app>.sidebar) nav a,
+  :where(.calendar-rail,.dashboard-rail,.app>.sidebar) nav button{
+    flex:0 0 auto;white-space:nowrap;
+  }
+  :where(.calendar-main,.dashboard-main,.workspace){min-width:0;width:100%}
+  :where(.grid.two,.two-col,.two-column,.split-layout){
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  :where(.formrow,.form-grid,.form-row){
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+/* Tablet portrait and split-screen widths. */
+@media(max-width:700px){
+  :root{--pl-page-gutter:16px;--pl-section-gap:14px}
+  .product-content>main:not(.app){padding:18px var(--pl-page-gutter) 34px}
+  :where(.grid.two,.two-col,.two-column,.split-layout,.formrow,.form-grid,.form-row){
+    grid-template-columns:minmax(0,1fr);
+  }
+  :where(.kpis,.metrics,.summary-grid,.card-grid,.stats-grid,.tool-grid,.project-grid){
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  :where(.hero,.pagehead,.calendar-heading,.dashboard-heading){
+    align-items:flex-start;gap:14px;
+  }
+  :where(.hero)>:last-child{max-width:100%}
+  :where(.calendar-main,.dashboard-main,.workspace){padding:18px var(--pl-page-gutter)}
+  :where(.panel,.card,.settings-panel,.auth-card){padding:clamp(14px,3.5vw,20px)}
+  :where(.account-nav,.top,.appbar){gap:10px}
+  :where(.account-nav)>:last-child{margin-left:auto}
+  :where(.calendar-grid){min-width:0}
+  :where(.calendar-grid) button,:where(.calendar-grid) a{min-width:0}
+  :where(.footer-main,.footer-grid){grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* Phones: single-column forms and content, compact navigation. */
+@media(max-width:480px){
+  :root{--pl-page-gutter:14px}
+  body{font-size:14px}
+  h1{font-size:clamp(28px,9vw,42px)}
+  h2{font-size:clamp(21px,6vw,30px)}
+  :where(.kpis,.metrics,.summary-grid,.card-grid,.stats-grid,.tool-grid,.project-grid,
+    .footer-main,.footer-grid,.profile-grid){
+    grid-template-columns:minmax(0,1fr);
+  }
+  :where(.calendar-main,.dashboard-main,.workspace){padding:14px}
+  :where(.panel,.card,.kpi,.summary-card,.settings-panel,.auth-card){
+    border-radius:13px;
+  }
+  :where(.hero,.pagehead,.calendar-heading,.dashboard-heading){
+    display:flex;flex-direction:column;align-items:stretch;
+  }
+  :where(.hero) .badge{align-self:flex-start}
+  :where(.form-actions,.form-actions>*){min-width:0;max-width:100%}
+  :where(.form-actions){display:flex;flex-wrap:wrap;gap:10px}
+  :where(.form-actions) button,:where(.form-actions) .btn{flex:1 1 auto}
+  :where(button,.btn,.primary,.account-submit){min-height:42px}
+  :where(.account-nav,.top,.appbar){padding-inline:14px}
+  :where(.calendar-grid){font-size:12px}
+  :where(.calendar-grid) button{padding:4px}
+}
+
+/* Very small phones and narrow split panes. */
+@media(max-width:360px){
+  :root{--pl-page-gutter:12px}
+  :where(.calendar-main,.dashboard-main,.workspace){padding:12px}
+  :where(.panel,.card,.auth-card){padding:13px}
+  :where(.calendar-grid){font-size:10px}
+  :where(.calendar-grid) button{padding:2px}
+  :where(.account-nav,.top,.appbar){gap:7px}
+}
+
+/* Landscape tablets and short viewports: prevent fixed-height clipping. */
+@media(max-height:560px) and (min-width:600px){
+  :where(.sidebar,.calendar-rail,.dashboard-rail){max-height:none;overflow:visible}
+  :where(.panel,.card,.auth-card){scroll-margin-block:12px}
+}
+
+/* Respect operating-system motion preferences. */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
