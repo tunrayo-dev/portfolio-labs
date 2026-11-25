@@ -39,7 +39,7 @@ async function sync(){
 Storage.prototype.setItem=function(k,v){
  if(String(k)===key&&ready){
   try{const old=parse(key,[]),next=JSON.parse(v),ids=new Set(next.map(h=>String(h.id))),del=new Set(parse(tombKey,[]));
-   old.forEach(h=>{if(h.id!=null&&!ids.has(String(h.id)))del.add(String(h.id)});
+   old.forEach(h=>{if(h.id!=null&&!ids.has(String(h.id)))del.add(String(h.id))});
    next.forEach(h=>{const oldh=old.find(x=>String(x.id)===String(h.id));if(!oldh||JSON.stringify(oldh)!==JSON.stringify(h))h.updatedAt=new Date().toISOString()});
    originalSet.call(localStorage,tombKey,JSON.stringify([...del]));v=JSON.stringify(next)
   }catch{}
