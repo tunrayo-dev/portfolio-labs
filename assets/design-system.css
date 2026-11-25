@@ -1,0 +1,56 @@
+/* Portfolio Labs shared design system */
+:root{--pl-font:Inter,'Plus Jakarta Sans',Manrope,system-ui,sans-serif;--pl-heading:'Space Grotesk',var(--pl-font);--pl-mono:'IBM Plex Mono',ui-monospace,monospace;--pl-radius:15px;--pl-field-radius:10px;--pl-shadow:0 12px 34px rgba(20,35,55,.07)}
+body{font-family:var(--pl-font)!important;font-size:14px;line-height:1.6}
+h1,h2,h3,h4{font-family:var(--pl-heading)!important;letter-spacing:-.035em}
+p{line-height:1.7}
+button,input,select,textarea{font:inherit}
+input,select,textarea{border-radius:var(--pl-field-radius)}
+button,.btn,.primary,.smallbtn{transition:background .18s,border-color .18s,color .18s,transform .18s,box-shadow .18s}
+.panel,.card,.kpi,.metrics article,.workspace-bar,.saved-card,.tool-item,.project-card,.pl-overview-panel{border-radius:var(--pl-radius)}
+/* A consistent gutter between the workspace navigation and content. */
+.product-content{min-width:0}
+.product-content>main:not(.app){width:100%;max-width:1600px;margin:0 auto;padding:clamp(22px,3.4vw,48px) clamp(22px,4.2vw,64px) 52px}
+.product-content>main:not(.app)>.wrap{width:100%;max-width:1500px;margin-inline:auto;padding:0}
+.product-content .wrap{padding-top:0}
+.product-content>main>.workspace-bar{margin-top:0}
+.product-content main section,.product-content main article{scroll-margin-top:24px}
+.product-content main .panel,.product-content main .kpi,.product-content main .card{margin-bottom:16px}
+.product-content input:not([type=checkbox]):not([type=radio]):not([type=file]),.product-content select,.product-content textarea,.workspace-fields input,.workspace-fields select{min-height:42px;border:1px solid var(--pl-line,#dce3eb);border-radius:10px;padding:10px 12px;font-family:var(--pl-font)}
+.product-content input:focus,.product-content select:focus,.product-content textarea:focus{outline:0;box-shadow:0 0 0 3px color-mix(in srgb,var(--product-accent,#477a9b) 16%,transparent)}
+.product-content label{line-height:1.45}
+.product-content .panel,.product-content .kpi,.product-content .card{box-shadow:var(--pl-shadow)}
+/* Shared light appearance. */
+html[data-pl-theme="light"]{color-scheme:light;--pl-bg:#f5f7fb;--pl-surface:#fff;--pl-text:#172435;--pl-muted:#64748b;--pl-line:#e1e7ef}
+html[data-pl-theme="light"] body{background:var(--pl-bg)!important;color:var(--pl-text)!important}
+html[data-pl-theme="light"] .top,html[data-pl-theme="light"] .appbar{background:#ffffffed!important;color:#172435!important;border-color:var(--pl-line)!important}
+html[data-pl-theme="light"] .top a,html[data-pl-theme="light"] .appbar a{color:#172435}
+html[data-pl-theme="light"] .master-hero{background:radial-gradient(ellipse at 80% 48%,#dceef5 0,transparent 42%),radial-gradient(ellipse at 20% 90%,#e9e4fb 0,transparent 38%),#f5f8fc!important}
+html[data-pl-theme="light"] .master-hero h1,html[data-pl-theme="light"] .master-hero .hero-foot,html[data-pl-theme="light"] .master-kicker{color:#172435!important}
+html[data-pl-theme="light"] .master-intro{color:#526174!important}
+html[data-pl-theme="light"] .master-nav a{color:#526174!important}
+html[data-pl-theme="light"] .top .brand{color:#172435!important}
+html[data-pl-theme="light"] .manifesto,html[data-pl-theme="light"] .products-section,html[data-pl-theme="light"] .master-end{background:#f5f7fb!important;color:#172435!important}
+html[data-pl-theme="light"] .manifesto p,html[data-pl-theme="light"] .section-top h2,html[data-pl-theme="light"] .master-end h2{color:#172435!important}
+html[data-pl-theme="light"] .manifesto-note,html[data-pl-theme="light"] .section-top>p,html[data-pl-theme="light"] .product-info p{color:#58677a!important}
+html[data-pl-theme="light"] .source-band{background:#eaf0f6!important;color:#172435!important}
+html[data-pl-theme="light"] .source-band p{color:#526174!important}
+html[data-pl-theme="light"] .product-info,html[data-pl-theme="light"] .master-product{color:#172435}
+html[data-pl-theme="light"] .master-end>a{background:#172435;color:#fff}
+html[data-pl-theme="light"] .product-content>main:not(.app){color:#172435}
+html[data-pl-theme="light"] .product-content .panel,html[data-pl-theme="light"] .product-content .kpi,html[data-pl-theme="light"] .product-content .card,html[data-pl-theme="light"] .product-content .workspace-bar,html[data-pl-theme="light"] .product-content .saved-card,html[data-pl-theme="light"] .product-content .tool-item{background:#fff!important;color:#172435!important;border-color:#e1e7ef!important}
+html[data-pl-theme="light"] .product-content .muted,html[data-pl-theme="light"] .product-content .hint,html[data-pl-theme="light"] .product-content .empty{color:#64748b!important}
+html[data-pl-theme="light"] .product-content input:not([type=checkbox]):not([type=radio]):not([type=file]),html[data-pl-theme="light"] .product-content select,html[data-pl-theme="light"] .product-content textarea{background:#fff!important;color:#172435!important;border-color:#d8e0e9!important}
+html[data-pl-theme="light"] .product-content .prompt-output{background:#edf2f7!important;color:#172435!important}
+html[data-pl-theme="light"] .product-content .pl-short-footer{background:#f5f7fb!important;color:#64748b!important;border-color:#e1e7ef!important}
+html[data-pl-theme="light"] .product-sidebar{background:#f0f4f8;color:#263648;border-color:#dce4ed}
+html[data-pl-theme="light"] .ps-brand{color:#172435}
+html[data-pl-theme="light"] .ps-product{background:#fff;border-color:#dce4ed}
+html[data-pl-theme="light"] .ps-product strong{color:#172435}
+html[data-pl-theme="light"] .ps-product small,html[data-pl-theme="light"] .ps-local,html[data-pl-theme="light"] .ps-link,html[data-pl-theme="light"] .ps-bottom a{color:#536579}
+html[data-pl-theme="light"] .ps-link:hover,html[data-pl-theme="light"] .ps-link.active{color:#172435;background:color-mix(in srgb,var(--product-accent) 16%,#fff)}
+html[data-pl-theme="light"] .ps-bottom .ps-home{color:#fff}
+html[data-pl-theme="light"] .ps-mobile-toggle{background:#fff;border-color:#dce4ed;color:#172435}
+html[data-pl-theme="light"] .product-content .workspace-sheet{background:#fff;color:#172435}
+html[data-pl-theme="light"] .product-content .workspace-sheet input,html[data-pl-theme="light"] .product-content .workspace-sheet select{background:#fff;color:#172435}
+@media(max-width:800px){.product-content>main:not(.app){padding:18px 16px 38px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
