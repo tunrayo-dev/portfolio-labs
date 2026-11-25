@@ -65,7 +65,7 @@ grant select,insert,update,delete on public.workspace_notifications to authentic
 
 create or replace function public.process_due_workspace_reminders()
 returns integer language plpgsql security definer set search_path=public as $$
-declare r record; processed integer:=0;
+declare r record; processed integer:=0; next_due timestamptz;
 begin
  for r in select * from public.workspace_reminders
    where status='pending' and due_at<=now()
