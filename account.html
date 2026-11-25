@@ -2,79 +2,138 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080a10"><meta name="description" content="Sign in or create your Portfolio Labs account.">
-<title>Your account — Portfolio Labs</title>
+<meta name="theme-color" content="#080a10"><meta name="description" content="Your Portfolio Labs account and workspace settings.">
+<title>Account — Portfolio Labs</title>
 <link rel="stylesheet" href="assets/account.css">
 </head>
-<body class="pl-account">
+<body class="pl-account" data-theme="dark">
 <div class="account-shell">
-<nav class="account-nav"><a class="account-brand" href="index.html">MLI <span>/ LABS</span></a><a class="account-home" href="index.html">← Back to Portfolio Labs</a></nav>
-<header class="account-intro"><span class="account-kicker">PORTFOLIO LABS / YOUR WORKSPACE</span><h1>One account.<br>All your workspaces.</h1><p>Create an account to establish your Portfolio Labs identity. Cloud saving for each product will be connected in the next integration stages.</p></header>
-<main class="account-card">
-<div class="account-status"><i></i><span id="connectionStatus">CONNECTING TO SUPABASE</span></div>
-<div id="authForms">
+<nav class="account-nav" aria-label="Main navigation">
+<a class="account-brand" href="index.html">PORTFOLIO <span>LABS</span></a>
+<a class="account-home" href="index.html"><span aria-hidden="true">←</span> Home</a>
+<button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to light mode"><span id="themeIcon" aria-hidden="true">☼</span><span id="themeLabel">Light mode</span></button>
+</nav>
+<main>
+<section class="auth-layout" id="authForms">
+<div class="auth-copy">
+<span class="account-kicker">PORTFOLIO LABS / YOUR ACCOUNT</span>
+<h1>Your work.<br><span>Your space.</span></h1>
+<p>One account for your Portfolio Labs workspaces. Sign in to manage your profile and account preferences.</p>
+<div class="auth-footnote"><span class="status-dot"></span><span id="connectionStatus">CONNECTING SECURELY</span></div>
+</div>
+<section class="account-card auth-card" aria-label="Account access">
 <div class="account-tabs"><button type="button" id="showSignIn" aria-pressed="true">Sign in</button><button type="button" id="showSignUp" aria-pressed="false">Create account</button></div>
 <form class="account-form" id="signInForm">
-<label>Email address<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
-<label>Password<input type="password" name="password" autocomplete="current-password" required minlength="6"></label>
-<button class="account-submit" type="submit">Sign in</button>
-<button class="account-secondary" type="button" id="forgotPassword">Forgot password?</button>
+<label>Email address<input type="email" name="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"></label>
+<label>Password<input type="password" name="password" autocomplete="current-password" required minlength="6" placeholder="Your password"></label>
+<button class="account-submit" type="submit">Sign in <span aria-hidden="true">→</span></button>
+<button class="text-action" type="button" id="forgotPassword">Forgot password?</button>
 </form>
 <form class="account-form" id="signUpForm" hidden>
-<label>Your name<input type="text" name="full_name" autocomplete="name" required maxlength="100"></label>
-<label>Email address<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
-<label>Password<input type="password" name="password" autocomplete="new-password" required minlength="6"></label>
-<button class="account-submit" type="submit">Create my account</button>
+<label>Your name<input type="text" name="full_name" autocomplete="name" required maxlength="100" placeholder="Full name"></label>
+<label>Email address<input type="email" name="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"></label>
+<label>Password<input type="password" name="password" autocomplete="new-password" required minlength="6" placeholder="Create a password"></label>
+<button class="account-submit" type="submit">Create account <span aria-hidden="true">→</span></button>
+<p class="form-hint">Use an email address you can access. You may need to confirm it before signing in.</p>
 </form>
 <form class="account-form" id="passwordRecoveryForm" hidden>
-<label>New password<input type="password" name="password" autocomplete="new-password" required minlength="6"></label>
-<button class="account-submit" type="submit">Update password</button>
+<p class="section-copy">Choose a new password for your account.</p>
+<label>New password<input type="password" name="password" autocomplete="new-password" required minlength="6" placeholder="New password"></label>
+<button class="account-submit" type="submit">Update password <span aria-hidden="true">→</span></button>
 </form>
-</div>
-<section class="account-session" id="signedInPanel" hidden>
-<p>You are signed in as:</p><strong id="signedInEmail"></strong>
-<button class="account-submit" type="button" id="signOut">Sign out</button>
-</section>
 <p class="account-message" id="accountMessage" role="status" aria-live="polite"></p>
+</section>
+</section>
+
+<section class="dashboard" id="dashboard" hidden>
+<aside class="dashboard-rail">
+<div class="rail-label">WORKSPACE</div>
+<a class="rail-link active" href="#profileSection"> <span>◉</span> Overview</a>
+<a class="rail-link" href="#preferencesSection"><span>⚙</span> Preferences</a>
+<a class="rail-link" href="#securitySection"><span>⌑</span> Security</a>
+<div class="rail-bottom"><a href="index.html">← Back to Portfolio Labs</a></div>
+</aside>
+<div class="dashboard-main">
+<header class="dashboard-heading">
+<div><span class="account-kicker">YOUR WORKSPACE / ACCOUNT</span><h1>Account settings</h1><p>Manage your profile and how Portfolio Labs works for you.</p></div>
+<a class="site-link" href="index.html">Explore Portfolio Labs <span>↗</span></a>
+</header>
+<section class="settings-panel" id="profileSection">
+<div class="panel-heading"><div><span class="panel-index">01 / PROFILE</span><h2>Personal details</h2><p>Keep your account information up to date.</p></div><div class="avatar" id="avatarInitials">U</div></div>
+<form id="profileForm" class="profile-grid">
+<label>Full name<input id="profileName" name="full_name" type="text" maxlength="100" autocomplete="name" placeholder="Your name" required></label>
+<label>Email address<input id="profileEmail" type="email" disabled><small>Email changes require confirmation from your inbox.</small></label>
+<div class="form-actions"><button class="account-submit compact" type="submit">Save changes</button><span class="inline-message" id="profileMessage" role="status"></span></div>
+</form>
+</section>
+<section class="settings-panel" id="preferencesSection">
+<div class="panel-heading"><div><span class="panel-index">02 / PREFERENCES</span><h2>Appearance</h2><p>Choose the look that feels right for your workspace.</p></div></div>
+<div class="preference-row"><div><strong>Colour theme</strong><p>Switch between dark and light appearance.</p></div><div class="theme-options" role="group" aria-label="Colour theme"><button type="button" data-theme-choice="dark" aria-pressed="true">◐ Dark</button><button type="button" data-theme-choice="light" aria-pressed="false">☼ Light</button><button type="button" data-theme-choice="system" aria-pressed="false">◌ System</button></div></div>
+<div class="preference-row"><div><strong>Interface motion</strong><p>Reduce decorative transitions and movement.</p></div><label class="switch"><input id="reduceMotion" type="checkbox"><span class="switch-track"></span><span class="sr-only">Reduce motion</span></label></div>
+</section>
+<section class="settings-panel" id="securitySection">
+<div class="panel-heading"><div><span class="panel-index">03 / SECURITY</span><h2>Account security</h2><p>Manage access to your Portfolio Labs account.</p></div></div>
+<div class="security-row"><div><strong>Signed in account</strong><p id="sessionEmail"></p></div><button class="quiet-button" type="button" id="signOut">Sign out</button></div>
+</section>
+<p class="dashboard-message" id="dashboardMessage" role="status" aria-live="polite"></p>
+</div>
+</section>
 </main>
-<p class="account-note">Use an email address you can access. Email confirmation may be required before your first sign-in. Google sign-in is not enabled yet. Never share your password or verification code.</p>
+<footer class="account-footer"><span>PORTFOLIO LABS</span><span>One account. Multiple workspaces.</span><a href="index.html">Return home ↗</a></footer>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/supabase-client.js"></script>
 <script>
 (function(){
+  'use strict';
   const client=window.portfolioSupabase;
   const $=id=>document.getElementById(id);
   const message=$('accountMessage');
   const say=(text,error=false)=>{message.textContent=text;message.classList.toggle('error',error)};
   const redirectTo=location.origin+'/portfolio-labs/account.html';
+  const homeUrl='index.html';
+  const themeKey='portfolio-labs-theme';
+  const motionKey='portfolio-labs-reduce-motion';
+  function applyTheme(theme){
+    const actual=theme==='system'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):theme;
+    document.body.dataset.theme=actual;
+    document.documentElement.style.colorScheme=actual;
+    $('themeLabel').textContent=actual==='dark'?'Light mode':'Dark mode';
+    $('themeIcon').textContent=actual==='dark'?'☼':'◐';
+    $('themeToggle').setAttribute('aria-label','Switch to '+(actual==='dark'?'light':'dark')+' mode');
+    document.querySelectorAll('[data-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===theme)));
+  }
+  let savedTheme=localStorage.getItem(themeKey)||'dark';
+  applyTheme(savedTheme);
+  $('themeToggle').addEventListener('click',()=>{savedTheme=document.body.dataset.theme==='dark'?'light':'dark';localStorage.setItem(themeKey,savedTheme);applyTheme(savedTheme);});
+  document.querySelectorAll('[data-theme-choice]').forEach(b=>b.addEventListener('click',()=>{savedTheme=b.dataset.themeChoice;localStorage.setItem(themeKey,savedTheme);applyTheme(savedTheme);}));
+  const reduceMotion=localStorage.getItem(motionKey)==='true';
+  $('reduceMotion').checked=reduceMotion;document.body.classList.toggle('reduce-motion',reduceMotion);
+  $('reduceMotion').addEventListener('change',e=>{localStorage.setItem(motionKey,String(e.target.checked));document.body.classList.toggle('reduce-motion',e.target.checked);});
   const setTab=signup=>{
-    $('showSignIn').setAttribute('aria-pressed',String(!signup));
-    $('showSignUp').setAttribute('aria-pressed',String(signup));
+    $('showSignIn').setAttribute('aria-pressed',String(!signup));$('showSignUp').setAttribute('aria-pressed',String(signup));
     $('signInForm').hidden=signup;$('signUpForm').hidden=!signup;say('');
   };
-  $('showSignIn').addEventListener('click',()=>setTab(false));
-  $('showSignUp').addEventListener('click',()=>setTab(true));
-  if(!client){$('connectionStatus').textContent='CONNECTION NOT READY';say('The Supabase library could not load. Check your internet connection and refresh.',true);return;}
-  $('connectionStatus').textContent='SUPABASE CONNECTED';
+  $('showSignIn').addEventListener('click',()=>setTab(false));$('showSignUp').addEventListener('click',()=>setTab(true));
+  if(!client){$('connectionStatus').textContent='CONNECTION NOT READY';say('The secure sign-in service could not load. Check your connection and refresh.',true);return;}
+  $('connectionStatus').textContent='SECURE CONNECTION READY';
   $('signUpForm').addEventListener('submit',async e=>{
     e.preventDefault();const f=new FormData(e.currentTarget);
     const {data,error}=await client.auth.signUp({email:String(f.get('email')).trim(),password:String(f.get('password')),options:{data:{full_name:String(f.get('full_name')).trim()},emailRedirectTo:redirectTo}});
     if(error){say(error.message,true);return;}
-    say(data.session?'Account created. You are signed in.':'Account created. Check your inbox for the confirmation email.');
-    await refreshSession();
+    if(data.session){location.href=homeUrl;return;}
+    say('Account created. Check your inbox for the confirmation email.');
   });
   $('signInForm').addEventListener('submit',async e=>{
     e.preventDefault();const f=new FormData(e.currentTarget);
     const {error}=await client.auth.signInWithPassword({email:String(f.get('email')).trim(),password:String(f.get('password'))});
-    if(error){say(error.message,true);return;}say('Signed in successfully.');await refreshSession();
+    if(error){say(error.message,true);return;}location.href=homeUrl;
   });
   $('passwordRecoveryForm').addEventListener('submit',async e=>{
     e.preventDefault();const password=new FormData(e.currentTarget).get('password');
     const {error}=await client.auth.updateUser({password:String(password)});
     if(error){say(error.message,true);return;}
-    $('passwordRecoveryForm').hidden=true;say('Your password has been updated. You can now sign in with it.');
-    await client.auth.signOut();setTab(false);
+    await client.auth.signOut();$('passwordRecoveryForm').hidden=true;setTab(false);say('Password updated. Sign in with your new password.');
   });
   $('forgotPassword').addEventListener('click',async()=>{
     const email=$('signInForm').elements.email.value.trim();
@@ -82,20 +141,35 @@
     const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo});
     say(error?error.message:'If an account exists for that email, a password-reset message will be sent.',!!error);
   });
-  $('signOut').addEventListener('click',async()=>{const {error}=await client.auth.signOut();say(error?error.message:'You have signed out.',!!error);await refreshSession();});
+  $('profileForm').addEventListener('submit',async e=>{
+    e.preventDefault();const user=currentUser;if(!user)return;
+    const name=$('profileName').value.trim();$('profileMessage').textContent='Saving…';
+    const {error:authError}=await client.auth.updateUser({data:{...user.user_metadata,full_name:name}});
+    if(authError){$('profileMessage').textContent=authError.message;return;}
+    const {error:dbError}=await client.from('profiles').update({full_name:name,updated_at:new Date().toISOString()}).eq('id',user.id);
+    if(dbError){$('profileMessage').textContent='Name saved to your account. Profile table update needs attention.';return;}
+    $('avatarInitials').textContent=(name||'U').trim().split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase();
+    $('profileMessage').textContent='Changes saved.';
+  });
+  $('signOut').addEventListener('click',async()=>{const {error}=await client.auth.signOut();if(error){$('dashboardMessage').textContent=error.message;return;}location.href=homeUrl;});
+  let currentUser=null;
   async function refreshSession(){
-    const {data,error}=await client.auth.getSession();
-    if(error){say(error.message,true);return;}
-    const user=data.session?.user;
-    $('authForms').hidden=!!user;$('signedInPanel').hidden=!user;
-    $('signedInEmail').textContent=user?.email||'';
+    const {data,error}=await client.auth.getSession();if(error){say(error.message,true);return;}
+    currentUser=data.session?.user||null;
+    const signedIn=!!currentUser;
+    $('authForms').hidden=signedIn;$('dashboard').hidden=!signedIn;
+    if(signedIn){
+      const user=currentUser;const name=user.user_metadata?.full_name||'';
+      $('profileName').value=name;$('profileEmail').value=user.email||'';$('sessionEmail').textContent=user.email||'';
+      $('avatarInitials').textContent=(name||user.email||'U').trim().split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase();
+    }
   }
   client.auth.onAuthStateChange((event)=>{
     if(event==='PASSWORD_RECOVERY'){
-      $('authForms').hidden=false;$('signInForm').hidden=true;$('signUpForm').hidden=true;
-      $('passwordRecoveryForm').hidden=false;say('Choose a new password for your account.');
-    }
-    setTimeout(refreshSession,0);
+      $('authForms').hidden=false;$('signInForm').hidden=true;$('signUpForm').hidden=true;$('passwordRecoveryForm').hidden=false;
+      say('Choose a new password for your account.');
+    } else if(event==='SIGNED_OUT'){currentUser=null;$('authForms').hidden=false;$('dashboard').hidden=true;}
+    if(event!=='PASSWORD_RECOVERY')setTimeout(refreshSession,0);
   });
   refreshSession();
 })();
