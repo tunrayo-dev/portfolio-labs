@@ -1,0 +1,114 @@
+/* Portfolio Labs — shared Let's Connect section
+   Loaded by site-shell.js on the homepage, product pages and shared public pages. */
+.labs-contact-section{
+  position:relative;isolation:isolate;overflow:hidden;
+  width:100%;max-width:none;min-width:0;
+  margin:clamp(64px,8vw,112px) auto 0;
+  padding:clamp(52px,7vw,92px) clamp(20px,6vw,80px);
+  border-top:1px solid rgba(255,255,255,.09);
+  background:
+    radial-gradient(ellipse at 88% 12%,rgba(91,133,190,.18),transparent 36%),
+    linear-gradient(135deg,#111a31 0%,#172744 62%,#172d3b 100%);
+  color:#f5f7fb;
+  font-family:Inter,'DM Sans',system-ui,sans-serif;
+  box-sizing:border-box;
+}
+.labs-contact-section,.labs-contact-section *{box-sizing:border-box}
+.labs-contact-section:before{
+  content:"";position:absolute;z-index:-1;width:480px;height:480px;
+  right:-130px;top:-260px;border:1px solid rgba(142,168,255,.2);
+  border-radius:50%;box-shadow:0 0 0 45px rgba(142,168,255,.035),0 0 0 95px rgba(142,168,255,.025);
+  pointer-events:none;
+}
+.labs-contact-inner{
+  width:100%;max-width:1160px;min-width:0;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,.88fr) minmax(320px,1.12fr);
+  gap:clamp(32px,6vw,88px);align-items:start;
+}
+.labs-contact-copy{min-width:0;padding-top:6px}
+.labs-contact-kicker{
+  display:inline-block;color:#a9bddb;font:500 10px/1.5 'DM Mono',ui-monospace,monospace;
+  letter-spacing:.16em;text-transform:uppercase;
+}
+.labs-contact-copy h2{
+  margin:26px 0 18px;color:#fff;
+  font:700 clamp(42px,5.8vw,74px)/1.02 'Manrope','Space Grotesk',Inter,sans-serif;
+  letter-spacing:-.065em;text-wrap:balance;
+}
+.labs-contact-copy h2 em{font-style:normal;color:#a9cbed}
+.labs-contact-copy p{
+  max-width:38ch;margin:0;color:#c0ccdc;
+  font:400 15px/1.85 'DM Sans',Inter,sans-serif;
+}
+.labs-contact-copy>a{
+  display:inline-flex;align-items:center;gap:8px;max-width:100%;
+  margin-top:24px;padding:0 0 9px;border-bottom:1px solid #8198ba;
+  color:#e0edfb;text-decoration:none;overflow-wrap:anywhere;
+  font:500 12px/1.6 'DM Mono',ui-monospace,monospace;
+}
+.labs-contact-copy>a:hover{color:#fff;border-color:#d7e8fa}
+.labs-contact-form{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:18px;
+  width:100%;min-width:0;margin:0;padding:clamp(20px,3vw,32px);
+  border:1px solid rgba(255,255,255,.16);border-radius:18px;
+  background:linear-gradient(145deg,rgba(255,255,255,.095),rgba(255,255,255,.045));
+  box-shadow:0 24px 70px rgba(3,8,20,.25),inset 0 1px rgba(255,255,255,.08);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+.labs-contact-form label{
+  display:grid;grid-template-columns:minmax(0,1fr);gap:8px;min-width:0;
+  margin:0;color:#e4ebf5;font:600 12px/1.5 'DM Sans',Inter,sans-serif;
+}
+.labs-form-row{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;min-width:0;
+}
+.labs-contact-form input,.labs-contact-form select,.labs-contact-form textarea{
+  display:block;width:100%;min-width:0;max-width:100%;min-height:46px;
+  margin:0;padding:12px 14px;border:1px solid rgba(190,207,231,.27);
+  border-radius:10px;background:#0d192b;color:#f7f9fc;
+  font:400 13px/1.5 'DM Sans',Inter,sans-serif;
+  box-shadow:none;outline:none;
+}
+.labs-contact-form input::placeholder,.labs-contact-form textarea::placeholder{color:#a3b1c5;opacity:1}
+.labs-contact-form select{color:#f0f4fa;color-scheme:dark}
+.labs-contact-form select:invalid{color:#a3b1c5}
+.labs-contact-form select option{background:#101d30;color:#f5f7fb}
+.labs-contact-form input:focus,.labs-contact-form select:focus,.labs-contact-form textarea:focus{
+  border-color:#a9cbed;box-shadow:0 0 0 3px rgba(169,203,237,.18);
+}
+.labs-contact-form textarea{min-height:136px;resize:vertical;line-height:1.7}
+.labs-form-submit{
+  display:flex;align-items:center;justify-content:flex-start;gap:16px;
+  flex-wrap:wrap;min-width:0;padding-top:2px;
+}
+.labs-form-submit button{
+  display:inline-flex;align-items:center;justify-content:center;gap:22px;
+  min-height:46px;margin:0;padding:12px 18px;border:1px solid #d8eaff;
+  border-radius:10px;background:#d8eaff;color:#12223c;
+  font:700 12px/1.4 'DM Sans',Inter,sans-serif;cursor:pointer;
+  transition:transform .18s ease,background .18s ease,box-shadow .18s ease;
+}
+.labs-form-submit button:hover{background:#fff;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.labs-form-submit button:focus-visible,.labs-contact-copy>a:focus-visible{
+  outline:3px solid #9cc6e9;outline-offset:3px;
+}
+.labs-form-submit small{
+  display:block;max-width:250px;color:#bdc9da;
+  font:400 11px/1.65 'DM Sans',Inter,sans-serif;
+}
+@media(max-width:760px){
+  .labs-contact-section{margin-top:56px;padding:52px 20px 58px}
+  .labs-contact-inner{grid-template-columns:minmax(0,1fr);gap:28px}
+  .labs-contact-copy h2{margin:18px 0 12px;font-size:clamp(40px,12vw,58px)}
+  .labs-contact-copy p{font-size:14px}
+  .labs-contact-form{padding:20px;gap:16px}
+  .labs-form-row{grid-template-columns:minmax(0,1fr);gap:16px}
+  .labs-form-submit{align-items:flex-start;flex-direction:column;gap:10px}
+}
+@media(max-width:420px){
+  .labs-contact-section{padding-inline:16px}
+  .labs-contact-form{padding:17px;border-radius:14px}
+  .labs-form-submit button{width:100%;justify-content:space-between}
+}
+@media(prefers-reduced-motion:reduce){.labs-form-submit button{transition:none}}
