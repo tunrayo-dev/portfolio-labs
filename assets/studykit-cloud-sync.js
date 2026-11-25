@@ -1,0 +1,18 @@
+/* StudyKit cloud sync: per-device snapshots, ID-based merge, deletion tombstones. */
+(()=>{'use strict';
+const cloud=window.PortfolioCloud,product='studykit',key='pl.study.v1',delKey='pl.study.cloud.deleted.v1',deviceKey='pl.study.cloud.device.v1';
+const status=document.getElementById('study-cloud-status'),originalSet=Storage.prototype.setItem;
+let ready=false,busy=false,queued=false,tm;
+const parse=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k)||'null');return v==null?d:v}catch{return d}};
+let device=localStorage.getItem(deviceKey);if(!device){device=crypto.randomUUID?crypto.randomUUID():'study-'+Date.now();originalSet.call(localStorage,deviceKey,device)}
+const record='studykit-device-'+device;
+function snap(){return{schema:1,device,updatedAt:new Date().toISOString(),cards:parse(key,[]),deleted:parse(delKey,[])}}
+function merge(rows){const deleted=new Set(rows.flatMap(x=>Array.isArray(x.deleted)?x.deleted:[])),map=new Map();
+ rows.forEach(x=>(Array.isArray(x.cards)?x.cards:[]).forEach(c=>{if(!c||c.id==null||deleted.has(String(c.id)))return;const id=String(c.id),p=map.get(id),newer=!p||(Date.parse(c.updatedAt||0)||0)>=(Date.parse(p.updatedAt||0)||0);map.set(id,newer?c:p)}));
+ return{cards:[...map.values()],deleted:[...deleted]}}
+function schedule(){if(!ready)return;clearTimeout(tm);tm=setTimeout(sync,1200)}
+async function sync(){if(!cloud?.available?.()){if(status)status.textContent='Saved locally · cloud unavailable';return}if(busy){queued=true;return}busy=true;try{const rows=await cloud.loadAll(product),remote=rows.map(r=>r.payload).filter(x=>x?.schema===1),local=snap(),m=merge([...remote,local]),payload={schema:1,device,updatedAt:new Date().toISOString(),...m};await cloud.save(product,record,payload);if(remote.length&&(JSON.stringify(local.cards)!==JSON.stringify(m.cards)||JSON.stringify(local.deleted)!==JSON.stringify(m.deleted))){originalSet.call(localStorage,key,JSON.stringify(m.cards));originalSet.call(localStorage,delKey,JSON.stringify(m.deleted));location.reload();return}if(status)status.textContent='Cloud sync active · '+new Date().toLocaleTimeString()}catch(e){if(status)status.textContent='Sync paused; local cards preserved. '+(e.message||'')}finally{busy=false;if(queued){queued=false;sync()}}}
+Storage.prototype.setItem=function(k,v){if(String(k)===key&&ready){try{const old=parse(key,[]),next=JSON.parse(v),ids=new Set(next.map(c=>String(c.id))),deleted=new Set(parse(delKey,[]));old.forEach(c=>{if(c.id!=null&&!ids.has(String(c.id)))deleted.add(String(c.id)});next.forEach(c=>{const prior=old.find(x=>String(x.id)===String(c.id));if(!prior||JSON.stringify(prior)!==JSON.stringify(c))c.updatedAt=new Date().toISOString()});originalSet.call(localStorage,delKey,JSON.stringify([...deleted]));v=JSON.stringify(next)}catch{}}originalSet.call(this,k,v);if(String(k)===key)schedule()};
+window.addEventListener('online',sync);document.addEventListener('visibilitychange',()=>{if(!document.hidden)sync()});
+(async()=>{if(!cloud?.available?.())return;try{const rows=await cloud.loadAll(product),remote=rows.map(r=>r.payload).filter(x=>x?.schema===1);if(remote.length){const m=merge([...remote,snap()]),local=parse(key,[]);if(JSON.stringify(local)!==JSON.stringify(m.cards)){originalSet.call(localStorage,key,JSON.stringify(m.cards));originalSet.call(localStorage,delKey,JSON.stringify(m.deleted));location.reload();return}}ready=true;await sync()}catch(e){if(status)status.textContent='Cloud not ready · local cards preserved'}})();
+})();
