@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080a10"><meta name="description" content="Sign in or create your Portfolio Labs account.">
+<title>Your account — Portfolio Labs</title>
+<link rel="stylesheet" href="assets/account.css">
+</head>
+<body class="pl-account">
+<div class="account-shell">
+<nav class="account-nav"><a class="account-brand" href="index.html">MLI <span>/ LABS</span></a><a class="account-home" href="index.html">← Back to Portfolio Labs</a></nav>
+<header class="account-intro"><span class="account-kicker">PORTFOLIO LABS / YOUR WORKSPACE</span><h1>One account.<br>All your workspaces.</h1><p>Create an account to establish your Portfolio Labs identity. Cloud saving for each product will be connected in the next integration stages.</p></header>
+<main class="account-card">
+<div class="account-status"><i></i><span id="connectionStatus">CONNECTING TO SUPABASE</span></div>
+<div id="authForms">
+<div class="account-tabs"><button type="button" id="showSignIn" aria-pressed="true">Sign in</button><button type="button" id="showSignUp" aria-pressed="false">Create account</button></div>
+<form class="account-form" id="signInForm">
+<label>Email address<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
+<label>Password<input type="password" name="password" autocomplete="current-password" required minlength="6"></label>
+<button class="account-submit" type="submit">Sign in</button>
+<button class="account-secondary" type="button" id="forgotPassword">Forgot password?</button>
+</form>
+<form class="account-form" id="signUpForm" hidden>
+<label>Your name<input type="text" name="full_name" autocomplete="name" required maxlength="100"></label>
+<label>Email address<input type="email" name="email" autocomplete="email" required maxlength="254"></label>
+<label>Password<input type="password" name="password" autocomplete="new-password" required minlength="6"></label>
+<button class="account-submit" type="submit">Create my account</button>
+</form>
+</div>
+<section class="account-session" id="signedInPanel" hidden>
+<p>You are signed in as:</p><strong id="signedInEmail"></strong>
+<button class="account-submit" type="button" id="signOut">Sign out</button>
+</section>
+<p class="account-message" id="accountMessage" role="status" aria-live="polite"></p>
+</main>
+<p class="account-note">Use an email address you can access. Email confirmation may be required before your first sign-in. Google sign-in is not enabled yet. Never share your password or verification code.</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-client.js"></script>
+<script>
+(function(){
+  const client=window.portfolioSupabase;
+  const $=id=>document.getElementById(id);
+  const message=$('accountMessage');
+  const say=(text,error=false)=>{message.textContent=text;message.classList.toggle('error',error)};
+  const redirectTo=location.origin+'/portfolio-labs/account.html';
+  const setTab=signup=>{
+    $('showSignIn').setAttribute('aria-pressed',String(!signup));
+    $('showSignUp').setAttribute('aria-pressed',String(signup));
+    $('signInForm').hidden=signup;$('signUpForm').hidden=!signup;say('');
+  };
+  $('showSignIn').addEventListener('click',()=>setTab(false));
+  $('showSignUp').addEventListener('click',()=>setTab(true));
+  if(!client){$('connectionStatus').textContent='CONNECTION NOT READY';say('The Supabase library could not load. Check your internet connection and refresh.',true);return;}
+  $('connectionStatus').textContent='SUPABASE CONNECTED';
+  $('signUpForm').addEventListener('submit',async e=>{
+    e.preventDefault();const f=new FormData(e.currentTarget);
+    const {data,error}=await client.auth.signUp({email:String(f.get('email')).trim(),password:String(f.get('password')),{options:{data:{full_name:String(f.get('full_name')).trim()},emailRedirectTo:redirectTo}}});
+    if(error){say(error.message,true);return;}
+    say(data.session?'Account created. You are signed in.':'Account created. Check your inbox for the confirmation email.');
+    await refreshSession();
+  });
+  $('signInForm').addEventListener('submit',async e=>{
+    e.preventDefault();const f=new FormData(e.currentTarget);
+    const {error}=await client.auth.signInWithPassword({email:String(f.get('email')).trim(),password:String(f.get('password'))});
+    if(error){say(error.message,true);return;}say('Signed in successfully.');await refreshSession();
+  });
+  $('forgotPassword').addEventListener('click',async()=>{
+    const email=$('signInForm').elements.email.value.trim();
+    if(!email){say('Enter your email address first, then choose Forgot password.',true);return;}
+    const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo});
+    say(error?error.message:'If an account exists for that email, a password-reset message will be sent.',!!error);
+  });
+  $('signOut').addEventListener('click',async()=>{const {error}=await client.auth.signOut();say(error?error.message:'You have signed out.',!!error);await refreshSession();});
+  async function refreshSession(){
+    const {data,error}=await client.auth.getSession();
+    if(error){say(error.message,true);return;}
+    const user=data.session?.user;
+    $('authForms').hidden=!!user;$('signedInPanel').hidden=!user;
+    $('signedInEmail').textContent=user?.email||'';
+  }
+  client.auth.onAuthStateChange(()=>refreshSession());
+  refreshSession();
+})();
+</script>
+</body></html>
